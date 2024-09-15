@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    
     void Update()
     {
         // Get input from horizontal axis (left/right or A/D keys) without smoothing

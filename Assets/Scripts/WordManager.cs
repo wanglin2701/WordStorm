@@ -24,6 +24,8 @@ public class WordManager : MonoBehaviour
         "hello", "help", "home", "hell"
     };
 
+    // Create a dictionary of words, try use Input field
+
     private static List<string> current_preflist = new List<string>();
 
     #endregion
