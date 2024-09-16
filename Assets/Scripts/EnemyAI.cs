@@ -93,9 +93,16 @@ public class EnemyAI : MonoBehaviour
 
         foreach (EnemyAI enemy in allEnemies)
         {
-            if (playerInput.Contains(enemy.enemyPrefix))
+            // Get the list of valid words for the enemy's prefix
+            if (prefixDictionary.wordDictionary.ContainsKey(enemy.enemyPrefix))
             {
-                enemy.DestroyEnemy(); // Destroy the enemy if the input matches the prefix
+                List<string> validWords = prefixDictionary.wordDictionary[enemy.enemyPrefix];
+                
+                // Check if the player's input matches any valid word exactly
+                if (validWords.Contains(playerInput))
+                {
+                      enemy.DestroyEnemy(); // Destroy the enemy if the input matches the prefix
+                }
             }
         }
     }
