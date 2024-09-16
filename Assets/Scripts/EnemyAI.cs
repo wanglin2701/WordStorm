@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     private static int currentEnemies = 0; // Number of enemies currently alive
     public static int enemiesPerWave = 4; // Number of enemies per wave
-    public Transform[] spawnPoints; // Array of spawn points
+    public static Transform[] spawnPoints; // Array of spawn points
 
     private static PrefixDictionary prefixDictionary; // Word dictionary for prefixes
 
@@ -26,6 +26,12 @@ public class EnemyAI : MonoBehaviour
         if (prefixDictionary == null)
         {
             prefixDictionary = FindObjectOfType<PrefixDictionary>();
+        }
+
+        // Set spawn points if they haven't been set yet
+        if (spawnPoints == null || spawnPoints.Length == 0)
+        {
+            spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
         }
         
         // If there are no active enemies, spawn the next wave
@@ -58,16 +64,20 @@ public class EnemyAI : MonoBehaviour
 
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            // Pick a random spawn point
-            //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+           // Choose a random spawn point from the array
+           //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-            // Instantiate the enemy at a spawn point
-            //GameObject enemy = Instantiate(Resources.Load("EnemyPrefab"), spawnPoint.position, Quaternion.identity) as GameObject;
+           // Choose a random prefix for the enemy
+           List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
+           //string randomPrefix = keys[Random.Range(0, keys.Count)];
 
-            // Set up the enemy's prefix
-            //EnemyAI enemyScript = enemy.GetComponent<EnemyAI>();
-            List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
-            //enemyScript.enemyPrefix = keys[Random.Range(0, keys.Count)];
+           // Instantiate a new enemy at the selected spawn point
+           //GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
+        
+           // Assign the prefix to the new enemy
+           //EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+           //enemyAI.enemyPrefix = randomPrefix;
+
         }
     }
 
