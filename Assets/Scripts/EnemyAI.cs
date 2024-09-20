@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     public GameObject player;
     public float speed;
+    public int health = 1;
 
     public string enemyPrefix; // Prefix linked to this enemy
 
@@ -64,23 +65,37 @@ public class EnemyAI : MonoBehaviour
 
         for (int i = 0; i < enemiesPerWave; i++)
         {
-           // Choose a random spawn point from the array
-           Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        //    Choose a random spawn point from the array
+        //    Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-           // Choose a random prefix for the enemy
-           List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
-           string randomPrefix = keys[Random.Range(0, keys.Count)];
+        //    Choose a random prefix for the enemy
+        //    List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
+        //    string randomPrefix = keys[Random.Range(0, keys.Count)];
 
-           // Instantiate a new enemy at the selected spawn point
-           GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
+        //    Instantiate a new enemy at the selected spawn point
+        //    GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
         
-           // Assign the prefix to the new enemy
-           EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-           enemyAI.enemyPrefix = randomPrefix;
+        //    Assign the prefix to the new enemy
+        //    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+        //    enemyAI.enemyPrefix = randomPrefix;
 
         }
     }
 
+    
+    // Call this method to apply damage to the enemy
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        // If health is 0 or less, destroy the enemy
+        if (health <= 0)
+        {
+            DestroyEnemy();
+        }
+    }
+
+    
     // Call this when an enemy is destroyed
     public void DestroyEnemy()
     {
@@ -97,7 +112,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // This method checks if the player's input matches any active enemy prefix
-    public static void CheckInput(string playerInput)
+    public static bool CheckInput(string playerInput)
     {
         EnemyAI[] allEnemies = FindObjectsOfType<EnemyAI>();
 
@@ -112,8 +127,11 @@ public class EnemyAI : MonoBehaviour
                 if (validWords.Contains(playerInput))
                 {
                       enemy.DestroyEnemy(); // Destroy the enemy if the input matches the prefix
+                      return true; // Return true when word is correct
                 }
             }
         }
+        return false; // Return false if no match is found
+
     }
 }
