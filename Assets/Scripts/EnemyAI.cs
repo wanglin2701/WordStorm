@@ -65,18 +65,18 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < enemiesPerWave; i++)
         {
            // Choose a random spawn point from the array
-           //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+           Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
            // Choose a random prefix for the enemy
            List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
-           //string randomPrefix = keys[Random.Range(0, keys.Count)];
+           string randomPrefix = keys[Random.Range(0, keys.Count)];
 
            // Instantiate a new enemy at the selected spawn point
-           //GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
+           GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
         
            // Assign the prefix to the new enemy
-           //EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-           //enemyAI.enemyPrefix = randomPrefix;
+           EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+           enemyAI.enemyPrefix = randomPrefix;
 
         }
     }
