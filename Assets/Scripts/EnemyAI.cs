@@ -112,7 +112,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // This method checks if the player's input matches any active enemy prefix
-    public static bool CheckInput(string playerInput)
+    public static string CheckInput(string playerInput)
     {
         EnemyAI[] allEnemies = FindObjectsOfType<EnemyAI>();
 
@@ -126,12 +126,11 @@ public class EnemyAI : MonoBehaviour
                 // Check if the player's input matches any valid word exactly
                 if (validWords.Contains(playerInput))
                 {
-                      enemy.DestroyEnemy(); // Destroy the enemy if the input matches the prefix
-                      return true; // Return true when word is correct
+                      return enemy.enemyPrefix; // Return the matching prefix
                 }
             }
         }
-        return false; // Return false if no match is found
+        return null; // Return null if no match is found
 
     }
 }

@@ -20,17 +20,16 @@ public class PlayerInput : MonoBehaviour
     void SubmitWord(string word)
     {
         
-        // Check if the word matches any enemy prefix
-        bool isWordCorrect = EnemyAI.CheckInput(word); // Modify CheckInput to return a boolean
+        string enemyPrefix = EnemyAI.CheckInput(word);
 
         // If the word is correct, trigger bullet fire
-        if (isWordCorrect)
+        if (!string.IsNullOrEmpty(enemyPrefix))
         {
-            playerAttack.FireBullet(); // Call FireBullet in PlayerAttack
+            playerAttack.FireBullet(enemyPrefix); // Pass the correct prefix to the FireBullet method
         }
         
         inputField.text = ""; // Clear the input field after submission
-
+        
         // Automatically refocus the input field after submission
         inputField.Select();
         inputField.ActivateInputField();

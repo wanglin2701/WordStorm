@@ -12,18 +12,11 @@ public class PlayerAttack : MonoBehaviour
     private Transform FireGun;
     public float bulletSpeed = 10f;
 
-        //Press "enter" will trigger the bullet fire
-        //if word incorrect then pressing "enter" will not trigger the bullet fire
-        //press enter will not fire bullet if word is wrong
-        //one press enter of correct word will trigger one bullet
-        
-
-
-    public void FireBullet()
+    public void FireBullet(string enemyPrefix) // Pass the prefix of the target enemy
     {
         
         // Find the closest enemy
-        GameObject enemy = FindClosestEnemy();
+        GameObject enemy = FindClosestEnemyWithPrefix(enemyPrefix);
         Vector2 direction;
 
         if (enemy != null)
@@ -39,6 +32,10 @@ public class PlayerAttack : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, FireGun.position, Quaternion.identity);
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
 
+        // Assign the enemy prefix to the bullet
+        BulletController bulletController = bullet.GetComponent<BulletController>();
+        bulletController.targetPrefix = enemyPrefix; // Set the target prefix on the bullet
+        
         // Rotate the bullet to face the target direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
@@ -48,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
         
     }
 
-  private GameObject FindClosestEnemy()
+  private GameObject FindClosestEnemyWithPrefix(string prefix)
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
@@ -56,14 +53,25 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
+            EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+
+            if (enemyAI.enemyPrefix == prefix)
             {
-                closestDistance = distance;
-                closestEnemy = enemy;
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
             }
+            
         }
 
         return closestEnemy;
     }
 }
+ //Press "enter" will trigger the bullet fire
+        //if word incorrect then pressing "enter" will not trigger the bullet fire
+        //press enter will not fire bullet if word is wrong
+        //one press enter of correct word will trigger one bullet

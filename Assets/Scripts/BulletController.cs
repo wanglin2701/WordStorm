@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public PlayerAttack playerAttack;
+    public string targetPrefix; // The prefix of the enemy this bullet should destroy
     public int bulletDamage = 1;
     
     // Start is called before the first frame update
@@ -19,9 +20,9 @@ public class BulletController : MonoBehaviour
     {
         EnemyAI enemy = collision.GetComponent<EnemyAI>();
 
-        if (enemy != null)
+        if (enemy != null && enemy.enemyPrefix == targetPrefix) // Check if the prefix matches
         {
-            // Optionally, call a method on the enemy to deal damage
+            
             enemy.TakeDamage(bulletDamage); // Assuming the enemy has a TakeDamage method
 
             // Destroy the bullet after hitting the enemy
