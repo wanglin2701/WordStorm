@@ -34,12 +34,6 @@ public class EnemyAI : MonoBehaviour
         {
             spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
         }
-        
-        // If there are no active enemies, spawn the next wave
-        if (currentEnemies == 0)
-        {
-            SpawnWave();
-        }
     }
     
     void Update()
@@ -58,29 +52,6 @@ public class EnemyAI : MonoBehaviour
         //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
-    // Spawns a wave of enemies
-    public static void SpawnWave()
-    {
-        currentEnemies = enemiesPerWave; // Reset enemy count for the wave
-
-        for (int i = 0; i < enemiesPerWave; i++)
-        {
-        //    Choose a random spawn point from the array
-        //    Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-        //    Choose a random prefix for the enemy
-        //    List<string> keys = new List<string>(prefixDictionary.wordDictionary.Keys);
-        //    string randomPrefix = keys[Random.Range(0, keys.Count)];
-
-        //    Instantiate a new enemy at the selected spawn point
-        //    GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy pro"), spawnPoint.position, spawnPoint.rotation);
-        
-        //    Assign the prefix to the new enemy
-        //    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-        //    enemyAI.enemyPrefix = randomPrefix;
-
-        }
-    }
 
     
     // Call this method to apply damage to the enemy
@@ -103,12 +74,6 @@ public class EnemyAI : MonoBehaviour
 
         // Destroy the enemy game object
         Destroy(gameObject);
-
-        // If all enemies are destroyed, spawn the next wave
-        if (currentEnemies == 0)
-        {
-            SpawnWave();
-        }
     }
 
     // This method checks if the player's input matches any active enemy prefix
