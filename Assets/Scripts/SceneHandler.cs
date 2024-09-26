@@ -11,8 +11,8 @@ public static class SceneHandler
 
     }
 
-    public static void LoadTest()
+    public static void LoadGame()
     {
-        SceneManager.LoadScene("PeckHsia");
+        SceneManager.LoadScene("game");
     }
 }

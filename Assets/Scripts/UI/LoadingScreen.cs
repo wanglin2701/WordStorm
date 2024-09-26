@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     void Start()
     {
         TestBTN = GameObject.Find("TestBTN").GetComponent<Button>();
-        TestBTN.onClick.AddListener(SceneHandler.LoadTest);
+        TestBTN.onClick.AddListener(SceneHandler.LoadGame);
     }
 
     // Update is called once per frame

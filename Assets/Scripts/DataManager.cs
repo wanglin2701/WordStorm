@@ -2,41 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//UNUSED FOR NOW
+//Consist of methods to read data and csv related
 
-public class DataManager : MonoBehaviour
+public static class DataManager 
 {
-    static DataManager instance;
-
-    void Awake()
+    
+    //Method to read the CSV File
+    public static string[] ReadCSVFile(string separator, TextAsset csv)
     {
-        if (instance != null)
+
+        if (csv.text == "")
         {
-            Destroy(gameObject);
+            Debug.LogError("CSV is Empty!!");
+            return null;
         }
 
         else
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            string[] listofRows;  //Store the list of rows read
 
-          
+            if (separator == "newline")   //SEPARATOR IS A NEW LINE, DATA WILL BE SEPARATED BASED ON THAT
+            {
+
+                listofRows = csv.text.Split(new[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                for (int i = 0; i < listofRows.Length; i++)  //Trim excess white spaces
+                {
+                    listofRows[i] = listofRows[i].Trim();
+                }
+            }
+
+            else  //Will be left for more sophisticated data base (Like waves)
+            {
+                listofRows = null;
+            }
+
+            return listofRows;
+
 
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
   
 }
