@@ -69,12 +69,20 @@ public static class DataManager
 
             isWriterOngoing = false;
         }
-       
-
-
 
     }
 
+    public static List<string> ConvertArraytoList(string[] array)
+    {
+        List<string> tempList = new List<string>();
+
+        foreach(string e in array)
+        {
+            tempList.Add(e);
+        }
+
+        return tempList;
+    }
 
 
 }

@@ -16,13 +16,11 @@ public class GameController : MonoBehaviour
     {
         //Call the method to read the data
 
-        dictionaryTXT = GameObject.Find("dictionarycheck").GetComponent<TextMeshProUGUI>();
-        prefixTXT = GameObject.Find("prefixcheck").GetComponent<TextMeshProUGUI>();
+        //DebugDataReadInBuild();
 
-        TextAsset dictionaryCSV = Resources.Load("FilteredWords/anti") as TextAsset;
-        TextAsset prefixCSV = Resources.Load("FilteredWords/pro") as TextAsset;
+        GameData.ReadGameData();
 
-        CheckDataInBuild(dictionaryCSV, prefixCSV);
+      
 
     }
 
@@ -30,6 +28,18 @@ public class GameController : MonoBehaviour
    
 
     #region Debug Methods
+
+    public void DebugDataReadInBuild()
+    {
+        dictionaryTXT = GameObject.Find("dictionarycheck").GetComponent<TextMeshProUGUI>();
+        prefixTXT = GameObject.Find("prefixcheck").GetComponent<TextMeshProUGUI>();
+
+        TextAsset dictionaryCSV = Resources.Load("FilteredWords/anti") as TextAsset;
+        TextAsset prefixCSV = Resources.Load("FilteredWords/pro") as TextAsset;
+
+        CheckDataInBuild(dictionaryCSV, prefixCSV);
+    }
+
     public void CheckDataInBuild(TextAsset dictionaryCSV, TextAsset prefixCSV)  //Use this method to check if the data is passed in successfully in the build
     {
 
