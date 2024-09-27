@@ -6,76 +6,78 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Array to hold different enemy prefabs (pro, com, dis, anti)
     public Transform[] spawnPoints;   // Array of spawn points for enemies
-
-    public int waveNumber = 1;        // Start at wave 1
-    public float timeBetweenSpawns = 4f; // Time delay between enemy spawns
-    public float spawnRate = 5f;    // Rate of spawning enemies
-    private int enemiesToSpawn;       // Number of enemies to spawn in the current wave
-    private int totalEnemiesInWave;   // Total enemies in the current wave
+    public float spawnRate = 2f;      // Rate of spawning enemies in seconds
+    
+    private int waveNumber = 0;        // Start at wave 1
+    private float timeBetweenWaves = 5f; // Time delay between enemy spawns
+    private float levelTimer = 60f;      // Timer for boss fight
+    private bool isBossLevel = false;
+    
+    
     void Start()
     {
-        StartWave();
-    }
-
-    public void StartWave()
-    {
-        // Determine how many enemies to spawn based on the wave
-        enemiesToSpawn = waveNumber * 3 + 1; // wave 1 spawns 4, wave 2 spawns 7
-        totalEnemiesInWave = enemiesToSpawn;
+        StartCoroutine(LevelTimer());
         StartCoroutine(SpawnWave());
     }
 
+    
     private IEnumerator SpawnWave()
     {
-        while (enemiesToSpawn > 0)
+         while (true)
         {
-            // Pick a random spawn point and random enemy type
-            Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            
-            // Instantiate enemy at the random spawn point
-            GameObject spawnedEnemy = Instantiate(randomEnemy, randomSpawnPoint.position, Quaternion.identity);
+            int[] enemiesTypeCount;
+            if (waveNumber == 0) { enemiesTypeCount = new int[]{4, 0}; }
+            else if (waveNumber == 1) { enemiesTypeCount = new int[]{5, 2}; }
+            else if (waveNumber == 2) { enemiesTypeCount = new int[]{6, 4}; }
+            else { enemiesTypeCount = new int[]{0, 0}; isBossLevel = true; }
 
-            // Debug message for testing
-            Debug.Log("Spawned: " + spawnedEnemy.name + " at " + randomSpawnPoint.position);
+            for (int i = 0; i < enemiesTypeCount[0]; i++)
+            {
+                SpawnEnemy(Random.Range(0, 3)); // Spawns one of the Normal Minion prefabs
+                yield return new WaitForSeconds(spawnRate);
+            }
+            for (int j = 0; j < enemiesTypeCount[1]; j++)
+            {
+                SpawnEnemy(3); // Always spawns the Armored Minion prefab
+                yield return new WaitForSeconds(spawnRate);
+            }
 
-            enemiesToSpawn--;
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+            if (isBossLevel)
+            {
+                StartBossLevel();
+                yield break;
+            }
 
-            // Wait before spawning the next enemy
-            yield return new WaitForSeconds(spawnRate);
+            waveNumber++;
+            yield return new WaitForSeconds(timeBetweenWaves);
         }
-
-        // After spawning, check if all enemies are destroyed to start the next wave
-        StartCoroutine(CheckForNextWave());
     }
 
-    private IEnumerator CheckForNextWave()
+    private void SpawnEnemy(int type)
     {
-        while (true)
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject spawnedEnemy = Instantiate(enemyPrefabs[type], randomSpawnPoint.position, Quaternion.identity);
+        Debug.Log("Spawned: " + spawnedEnemy.name + " at " + randomSpawnPoint.position);
+    }
+
+    private IEnumerator LevelTimer()
+    {
+        while (levelTimer > 0)
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-            // Check if any enemies are still active
-            bool enemiesExist = false;
-            foreach (GameObject enemy in enemies)
-            {
-                if (enemy != null) // check if null before accessing
-                {
-                    enemiesExist = true;
-                    break; // If any enemy is found, stop checking
-                }
-            }
-
-            if (!enemiesExist)
-            {
-                // All enemies are destroyed, start the next wave
-                waveNumber++;
-                StartWave();
-                yield break; // Exit the coroutine once the next wave starts
-            }
-
-            // Wait a second before checking again
             yield return new WaitForSeconds(1f);
+            levelTimer--;
+            if (levelTimer == 0 && isBossLevel)
+            {
+                Debug.Log("Boss fight time is over!");
+                // Handle end of boss fight (victory or failure)
+            }
         }
+    }
+    
+    private void StartBossLevel()
+    {
+        // Initialize boss fight with specific settings or spawn boss
+        Debug.Log("Boss level started with a timer of 60 seconds.");
     }
 }

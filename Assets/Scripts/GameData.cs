@@ -81,9 +81,8 @@ public static class GameData
 
                     Debug.Log(prefix + " and " + word + " match!");
                 }
-
             }
-
+            
             if(prefixAndWordMatch)
             {
                 //    Debug.Log(prefix);
@@ -91,12 +90,7 @@ public static class GameData
                 //    Debug.Log(dictionary.Count);
                 dictionary.Add(prefix, correctWords);
                 no_CharWordPrefixCorrect = 0;
-
-
             }
-
-
-
         }
 
         foreach (string word in dictionary["anti"])
