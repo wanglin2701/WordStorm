@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro; 
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Array to hold different enemy prefabs (pro, com, dis, anti)
     public Transform[] spawnPoints;   // Array of spawn points for enemies
     public float spawnRate = 2f;      // Rate of spawning enemies in seconds
-    
     private int waveNumber = 0;        // Start at wave 1
     private float timeBetweenWaves = 5f; // Time delay between enemy spawns
-    private float levelTimer = 60f;      // Timer for boss fight
+    private float levelTimer = 59f;      // Timer for boss fight
     private bool isBossLevel = false;
-    
+    public TextMeshProUGUI timerText;
     
     void Start()
     {
@@ -65,16 +66,18 @@ public class EnemySpawner : MonoBehaviour
     {
         while (levelTimer > 0)
         {
+            timerText.text = levelTimer.ToString();  // Update the text to show the remaining time
             yield return new WaitForSeconds(1f);
             levelTimer--;
             if (levelTimer == 0 && isBossLevel)
             {
                 Debug.Log("Boss fight time is over!");
+                timerText.text = "Time's Up!";
                 // Handle end of boss fight (victory or failure)
             }
         }
     }
-    
+
     private void StartBossLevel()
     {
         // Initialize boss fight with specific settings or spawn boss
