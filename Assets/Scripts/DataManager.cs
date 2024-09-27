@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEditor;
 
 //Consist of methods to read data and csv related
 
@@ -8,10 +10,10 @@ public static class DataManager
 {
     
     //Method to read the CSV File
-    public static string[] ReadCSVFile(string separator, TextAsset csv)
+    public static string[] ReadTXTFile(string separator, TextAsset txt)
     {
 
-        if (csv.text == "")
+        if (txt.text == "")
         {
             Debug.LogError("CSV is Empty!!");
             return null;
@@ -24,7 +26,7 @@ public static class DataManager
             if (separator == "newline")   //SEPARATOR IS A NEW LINE, DATA WILL BE SEPARATED BASED ON THAT
             {
 
-                listofRows = csv.text.Split(new[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+                listofRows = txt.text.Split(new[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
 
                 for (int i = 0; i < listofRows.Length; i++)  //Trim excess white spaces
                 {
@@ -42,8 +44,38 @@ public static class DataManager
 
         }
     }
-    
 
-  
+    public static void WriteTXTFile(string fileName, List<string> wordListForPrefix)
+    {
+        bool isWriterOngoing = false;
+
+        string path = Application.dataPath + "/Resources/FilteredWords/" + fileName + ".txt";
+        Debug.Log(path);
+
+        if(isWriterOngoing == false)
+        {
+            isWriterOngoing = true;
+
+            
+            // Create an instance of StreamWriter to write text to a file.
+            StreamWriter sw = new StreamWriter(path);
+
+            foreach (string word in wordListForPrefix)
+            {
+                sw.WriteLine(word);
+            }
+
+            sw.Close();
+
+            isWriterOngoing = false;
+        }
+       
+
+
+
+    }
+
+
+
 }
 

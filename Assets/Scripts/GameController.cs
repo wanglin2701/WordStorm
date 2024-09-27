@@ -19,26 +19,13 @@ public class GameController : MonoBehaviour
         dictionaryTXT = GameObject.Find("dictionarycheck").GetComponent<TextMeshProUGUI>();
         prefixTXT = GameObject.Find("prefixcheck").GetComponent<TextMeshProUGUI>();
 
+        TextAsset dictionaryCSV = Resources.Load("FilteredWords/anti") as TextAsset;
+        TextAsset prefixCSV = Resources.Load("FilteredWords/pro") as TextAsset;
 
-        LoadData();
-
-    }
-
-    public void LoadData()
-    {
-        //Read the .txt files strictly from the Resources folder only (IF NOT THE DATA READING WILL NOT WORK)
-        TextAsset dictionaryCSV = Resources.Load("wordList") as TextAsset;
-        TextAsset prefixCSV = Resources.Load("prefixList") as TextAsset;
-
-
-        //Read the CSV File and store the string[] data
-        string[] dictionaryData = DataManager.ReadCSVFile("newline", dictionaryCSV);
-        string[] prefixData = DataManager.ReadCSVFile("newline", prefixCSV);
-
-        //Update the GameData so that it will ahve the updated version
-        GameData.SetDictionaryData(dictionaryData, prefixData);
+        CheckDataInBuild(dictionaryCSV, prefixCSV);
 
     }
+
 
    
 
@@ -48,12 +35,12 @@ public class GameController : MonoBehaviour
 
         if (dictionaryCSV != null)
         {
-            dictionaryTXT.text = "dictionary success";
+            dictionaryTXT.text = "anti success";
         }
 
         if (prefixCSV != null)
         {
-            prefixTXT.text = "prefix success";
+            prefixTXT.text = "pro success";
 
         }
     }
