@@ -14,20 +14,28 @@ public class EnemyAI : MonoBehaviour
     private static int currentEnemies = 0; // Number of enemies currently alive
     public static int enemiesPerWave = 4; // Number of enemies per wave
     public static Transform[] spawnPoints; // Array of spawn points
-    private static PrefixDictionary prefixDictionary; // Word dictionary for prefixes
+
+    //private static PrefixDictionary prefixDictionary; // Word dictionary for prefixes
+    private static Dictionary<string, List<string>> WSDictionary;
+
+    private static Dictionary<string, int> usedWords = new Dictionary<string, int>();
+
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
 
     private void Start()
     {
+        //Get Dictionary data
+        WSDictionary = GameData.GetWordStormDictionary();
+
         // Ensure player reference and word dictionary are set
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
         }
-        if (prefixDictionary == null)
-        {
-            prefixDictionary = FindObjectOfType<PrefixDictionary>();
-        }
+        //if (prefixDictionary == null)
+        //{
+        //    prefixDictionary = FindObjectOfType<PrefixDictionary>();
+        //}
 
         // Set spawn points if they haven't been set yet
         if (spawnPoints == null || spawnPoints.Length == 0)
@@ -124,17 +132,53 @@ public class EnemyAI : MonoBehaviour
 
         foreach (EnemyAI enemy in allEnemies)
         {
-            // Get the list of valid words for the enemy's prefix
-            if (prefixDictionary.wordDictionary.ContainsKey(enemy.enemyPrefix))
+            if (WSDictionary.ContainsKey(enemy.enemyPrefix))
             {
-                List<string> validWords = prefixDictionary.wordDictionary[enemy.enemyPrefix];
-                
+                List<string> validWords = WSDictionary[enemy.enemyPrefix];
+
                 // Check if the player's input matches any valid word exactly
                 if (validWords.Contains(playerInput))
                 {
-                      return enemy.enemyPrefix; // Return the matching prefix
+                    
+                    if (usedWords.ContainsKey(playerInput))
+                    {
+                        if (usedWords[playerInput] >= 2)  //For testing purpose, each word can only use twice
+                        {
+                            return null;  //Return null so player cannot reuse words
+                        }
+
+                        else
+                        {
+                            usedWords[playerInput]++;
+
+                        }
+                    }
+
+                    else
+                    {
+                        usedWords.Add(playerInput, +1);
+
+                    }
+
+                    Debug.Log(playerInput);
+                    Debug.Log(usedWords[playerInput]);
+
+                    return enemy.enemyPrefix; // Return the matching prefix
                 }
             }
+
+
+            //// Get the list of valid words for the enemy's prefix
+            //if (prefixDictionary.wordDictionary.ContainsKey(enemy.enemyPrefix))
+            //{
+            //    List<string> validWords = prefixDictionary.wordDictionary[enemy.enemyPrefix];
+
+            //    // Check if the player's input matches any valid word exactly
+            //    if (validWords.Contains(playerInput))
+            //    {
+            //        return enemy.enemyPrefix; // Return the matching prefix
+            //    }
+            //}
         }
         return null; // Return null if no match is found
     }

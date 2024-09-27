@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject spawnedEnemy = Instantiate(enemyPrefabs[type], randomSpawnPoint.position, Quaternion.identity);
-        Debug.Log("Spawned: " + spawnedEnemy.name + " at " + randomSpawnPoint.position);
+        //Debug.Log("Spawned: " + spawnedEnemy.name + " at " + randomSpawnPoint.position);
     }
 
     private IEnumerator LevelTimer()
