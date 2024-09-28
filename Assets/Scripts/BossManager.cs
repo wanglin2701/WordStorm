@@ -28,6 +28,14 @@ public class BossManager : MonoBehaviour
             StopCoroutine(BossFightTimer());
         }
     }
+    private void UpdateBossUI(bool show)
+    {
+        bossTimerText.gameObject.SetActive(show);
+        if (healthBar != null)
+        {
+            healthBar.gameObject.SetActive(show);  // Control the visibility of the health bar
+        }
+    }
 
     private IEnumerator BossFightTimer()
     {
@@ -58,14 +66,6 @@ public class BossManager : MonoBehaviour
         if (bossHealth <= 0)
         {
             EndBossFight();
-        }
-    }
-    private void UpdateBossUI(bool show)
-    {
-        bossTimerText.gameObject.SetActive(show);
-        if (healthBar != null)
-        {
-            healthBar.gameObject.SetActive(show);  // Control the visibility of the health bar
         }
     }
 
