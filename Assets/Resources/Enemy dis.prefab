@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 0.5
+  speed: 1
   stoppingDistance: 1
   enemyAvoidanceDistance: 0.8
   separationForce: 2.1
