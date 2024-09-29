@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TeamLogo.unity
+    guid: 48b17f08b7297114ba1342a4bef51704
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: c1aa46ffac700a24ea9b4bf28c36eee2
+  - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
     guid: ab7e1136d81f19f4b923cd7b0a6127c0
   - enabled: 1

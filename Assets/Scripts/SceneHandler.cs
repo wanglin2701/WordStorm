@@ -11,8 +11,20 @@ public static class SceneHandler
 
     }
 
+    public static void LoadStartScreen()
+    {
+        SceneManager.LoadScene("StartScreen");
+
+    }
+
     public static void LoadGame()
     {
         SceneManager.LoadScene("game");
     }
+
+    public static void LoadLoadingScreen()
+    {
+        SceneManager.LoadScene("LoadingScreen");
+    }
+
 }
