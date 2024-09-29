@@ -10,10 +10,12 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    static TextMeshProUGUI dictionaryTXT;
-    static TextMeshProUGUI prefixTXT;
+    private static TextMeshProUGUI dictionaryTXT;
+    private static TextMeshProUGUI prefixTXT;
 
-    string activeScene;
+    private string activeScene;
+
+    private bool isFadeAnimDone = false;
 
     //Loading Screen UI Element
     private static Slider progress_bar;
@@ -67,10 +69,9 @@ public class GameController : MonoBehaviour
             Image teamLogo = UI_Manager.GetTeamLogo();
 
             FadeInOut.StartFadeAnimation(teamLogo);
-            StartCoroutine(WaitforSecond(3f));
+            StartCoroutine(WaitforSecond(4f));
             FadeInOut.StartFadingOut(teamLogo);
-            StartCoroutine(WaitforSecond(10f));
-            SceneHandler.LoadStartScreen();
+            StartCoroutine(WaitforSecond(2f));
         }
     }
 
@@ -81,8 +82,23 @@ public class GameController : MonoBehaviour
         while (counter < duration)
         {
             counter += Time.deltaTime;
+
+            
+
             yield return null; //Don't freeze Unity
+
+           
         }
+        Debug.Log(counter);
+        if(counter >= duration && duration == 2f)
+        {
+           
+            SceneHandler.LoadStartScreen();
+
+            
+        }
+
+     
 
     }
 

@@ -51,4 +51,6 @@ public static class UI_Manager
         //quitBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
     }
 
+    
+
 }

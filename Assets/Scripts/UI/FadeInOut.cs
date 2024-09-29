@@ -12,6 +12,8 @@ public static class FadeInOut
 
     private static float transparencyVal = 0;
 
+    private static bool isAnimDone = false;
+
     public static void StartFadeAnimation(Image obj)
     {
 
@@ -50,7 +52,6 @@ public static class FadeInOut
                 {
 
                     isFadingOut = false;
-                    SceneHandler.LoadGame();
 
                 }
 
@@ -59,6 +60,9 @@ public static class FadeInOut
         }
     }
 
+
    
+
+
 
 }
