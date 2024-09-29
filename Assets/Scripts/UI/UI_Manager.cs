@@ -11,7 +11,6 @@ public static class UI_Manager
  
 
     //Team Logo Screen Element
-    private static Image[] teamLogo_array;
     private static Image teamLogo;
 
     //Start Screen UI Elements
@@ -22,8 +21,7 @@ public static class UI_Manager
 
     public static void SetTeamLogoScene()
     {
-        teamLogo_array = GameObject.FindObjectsOfType<Image>();
-        teamLogo = teamLogo_array[0];
+        teamLogo = GameObject.FindObjectOfType<Image>();
     }
 
     public static Image GetTeamLogo()
@@ -34,18 +32,18 @@ public static class UI_Manager
     public static void SetStartScreenScene()
     {
         //Get the UI Elements
-        startScreenBTN_array = GameObject.FindObjectsOfType<Button>();
+        startScreenBTN_array = GameObject.Find("Buttons").GetComponentsInChildren<Button>();
 
-        playBTN = startScreenBTN_array[2];
+        playBTN = startScreenBTN_array[0];
         playBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Play";
         playBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
 
-        creditsBTN = startScreenBTN_array[0];
+        creditsBTN = startScreenBTN_array[1];
         creditsBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Credits";
 
         //creditsBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
 
-        quitBTN = startScreenBTN_array[1];
+        quitBTN = startScreenBTN_array[2];
         quitBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Quit";
 
         //quitBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
