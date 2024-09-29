@@ -26,8 +26,16 @@ public class PlayerInput : MonoBehaviour
         if (!string.IsNullOrEmpty(enemyPrefix))
         {
             playerAttack.FireBullet(enemyPrefix); // Pass the correct prefix to the FireBullet method
+
+            ScoreManager.RewardScores(word, 1);  //Reward Score based on the number letters
+            UI_Manager.UpdateScoreTmpro();
+
+            ComboManager.StartComboTimer();
+            ComboManager.AddCombo();
+            UI_Manager.UpdateComboTmpro();
+
         }
-        
+
         inputField.text = ""; // Clear the input field after submission
         
         // Automatically refocus the input field after submission

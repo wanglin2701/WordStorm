@@ -12,8 +12,6 @@ public static class FadeInOut
 
     private static float transparencyVal = 0;
 
-    private static bool isAnimDone = false;
-
     public static void StartFadeAnimation(Image obj)
     {
 

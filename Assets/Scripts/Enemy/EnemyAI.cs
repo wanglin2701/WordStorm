@@ -160,8 +160,8 @@ public class EnemyAI : MonoBehaviour
 
                     }
 
-                    Debug.Log(playerInput);
-                    Debug.Log(usedWords[playerInput]);
+                    //Debug.Log(playerInput);
+                    //Debug.Log(usedWords[playerInput]);
 
                     return enemy.enemyPrefix; // Return the matching prefix
                 }

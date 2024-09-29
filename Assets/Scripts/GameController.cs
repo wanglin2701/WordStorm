@@ -13,12 +13,10 @@ public class GameController : MonoBehaviour
     private static TextMeshProUGUI dictionaryTXT;
     private static TextMeshProUGUI prefixTXT;
 
-    private string activeScene;
-
-    private bool isFadeAnimDone = false;
-
     //Loading Screen UI Element
     private static Slider progress_bar;
+
+    private static string activeScene;
 
     private void Awake()
     {
@@ -55,6 +53,11 @@ public class GameController : MonoBehaviour
             UI_Manager.SetStartScreenScene();
         }
 
+        else if(SceneHandler.GetActiveSceneName() == "game")
+        {
+            UI_Manager.SetGameScene();
+        }
+
     }
 
     private void Update()
@@ -71,7 +74,7 @@ public class GameController : MonoBehaviour
             FadeInOut.StartFadeAnimation(teamLogo);
             StartCoroutine(WaitforSecond(4f));
             FadeInOut.StartFadingOut(teamLogo);
-            StartCoroutine(WaitforSecond(2f));
+            StartCoroutine(WaitforSecond(2.5f));
         }
     }
 
@@ -90,7 +93,7 @@ public class GameController : MonoBehaviour
            
         }
         Debug.Log(counter);
-        if(counter >= duration && duration == 2f)
+        if(counter >= duration && duration == 2.5f)
         {
            
             SceneHandler.LoadStartScreen();

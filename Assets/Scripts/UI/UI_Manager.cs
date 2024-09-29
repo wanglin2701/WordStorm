@@ -19,6 +19,10 @@ public static class UI_Manager
     private static Button creditsBTN;
     private static Button quitBTN;
 
+    //Game UI Elements
+    private static TextMeshProUGUI scoreTxt;
+    private static TextMeshProUGUI comboTxt;   
+
     public static void SetTeamLogoScene()
     {
         teamLogo = GameObject.FindObjectOfType<Image>();
@@ -49,6 +53,31 @@ public static class UI_Manager
         //quitBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
     }
 
-    
+    public static void SetGameScene()
+    {
+        scoreTxt = GameObject.Find("ScoreTxt").GetComponentInChildren<TextMeshProUGUI>();
+        comboTxt = GameObject.Find("ComboTxt").GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    public static void UpdateScoreTmpro()
+    {
+        Debug.Log(ScoreManager.GetPlayerScore().ToString());
+
+        scoreTxt.text = ScoreManager.GetPlayerScore().ToString();
+    }
+
+    public static void UpdateComboTmpro()
+    {
+        comboTxt.text = "x" + ComboManager.GetCombo().ToString();
+    }
+
+    public static TextMeshProUGUI GetComboTxt()
+    {
+        return comboTxt;
+    }
+
+
+
+
 
 }
