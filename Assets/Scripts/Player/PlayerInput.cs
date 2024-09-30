@@ -30,8 +30,7 @@ public class PlayerInput : MonoBehaviour
             ScoreManager.RewardScores(word, 1);  //Reward Score based on the number letters
             UI_Manager.UpdateScoreTmpro();
 
-            ComboManager.StartComboTimer();
-            ComboManager.AddCombo();
+            ComboManager.ResetComboTimer();
             UI_Manager.UpdateComboTmpro();
 
         }

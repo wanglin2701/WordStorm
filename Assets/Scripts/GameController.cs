@@ -76,6 +76,11 @@ public class GameController : MonoBehaviour
             FadeInOut.StartFadingOut(teamLogo);
             StartCoroutine(WaitforSecond(2.5f));
         }
+
+        else if(SceneHandler.GetActiveSceneName() == "game")
+        {
+            ComboManager.FadingOutComboTxt();  //Keeps updating the indication for the combo timer (Which is fading out)
+        }
     }
 
     static IEnumerator WaitforSecond(float duration)  //1f 1 second
