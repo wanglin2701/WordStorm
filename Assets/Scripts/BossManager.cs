@@ -89,5 +89,6 @@ public class BossManager : MonoBehaviour
         Debug.Log("Boss defeated!");
         // Here can add any additional logic needed for when the boss fight ends
         // eg. could load a victory scene or display a win message
+        // fore prefix, have to key in one word in 30 secs. 
     }
 }

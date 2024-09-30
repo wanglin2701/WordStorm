@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
     public GameObject[] healthPoints;
+    public string gameOverSceneName = "GameOver";
     
     void Start()
     {
@@ -54,5 +55,8 @@ public class PlayerHealth : MonoBehaviour
         // Handle player death (e.g., game over)
         Debug.Log("Player is dead!");
         // Implement additional game over logic here
+
+        // Change to the Game Over scene
+        SceneHandler.LoadEndingScreen();
     }
 }
