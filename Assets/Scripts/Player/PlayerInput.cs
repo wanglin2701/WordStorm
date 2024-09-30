@@ -41,4 +41,5 @@ public class PlayerInput : MonoBehaviour
         inputField.Select();
         inputField.ActivateInputField();
     }
+
 }

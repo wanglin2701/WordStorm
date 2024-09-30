@@ -78,15 +78,26 @@ public class GameController : MonoBehaviour
             Image teamLogo = UI_Manager.GetTeamLogo();
 
             FadeInOut.StartFadeAnimation(teamLogo);
-            StartCoroutine(WaitforSecond(4f));
+            StartCoroutine(WaitforSecond(4f, "FadeAnim"));
             FadeInOut.StartFadingOut(teamLogo);
-            StartCoroutine(WaitforSecond(2.5f));
+            StartCoroutine(WaitforSecond(2.5f, "FadeAnim"));
         }
 
         else if(SceneHandler.GetActiveSceneName() == "game")
         {
-            ComboManager.FadingOutComboTxt();  //Keeps updating the indication for the combo timer (Which is fading out)
 
+            //if (ComboManager.isComgoingCurrentlyRunning())
+            //{
+            //    Debug.Log("trigger coroutine"); 
+            //    StartCoroutine(WaitforSecond(20f, "Combo"));
+            //}
+
+            //else
+            //{
+                ComboManager.FadingOutComboTxt(); //Keeps updating the indication for the combo timer (Which is fading out)
+            //}
+
+            //Checking Input
             if (Input.GetMouseButtonDown(0))
             {
                 UI_Manager.SetInputField();
@@ -94,7 +105,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    static IEnumerator WaitforSecond(float duration)  //1f 1 second
+    static IEnumerator WaitforSecond(float duration, string destination)  //1f 1 second
     {
         float counter = 0f;
 
@@ -108,13 +119,22 @@ public class GameController : MonoBehaviour
 
            
         }
-        Debug.Log(counter);
-        if(counter >= duration && duration == 2.5f)
-        {
-           
-            SceneHandler.LoadStartScreen();
+        //Debug.Log(counter);
 
-            
+        if(counter >= duration)
+        {
+           if(destination == "FadeAnim")
+           {
+                SceneHandler.LoadStartScreen();
+
+           }
+
+           else if (destination == "Combo")
+           {
+                ComboManager.FadingOutComboTxt();
+           }
+
+
         }
 
      
