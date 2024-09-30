@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour
 
         }
 
+        else if (SceneHandler.GetActiveSceneName() == "game")
+        {
+            UI_Manager.SetInputField();
+        }
+
     }
 
     // Start is called before the first frame update
@@ -57,8 +62,6 @@ public class GameController : MonoBehaviour
         {
             UI_Manager.SetGameScene();
             UI_Manager.SetInputField();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
     }

@@ -10,7 +10,7 @@ public static class ComboManager
 
     private static float transparencyVal = 0;
     private static TextMeshProUGUI comboText = UI_Manager.GetComboTxt();
-    public static float TimeToFade = 30f;
+    public static float TimeToFade = 0.5f;
 
     public static int GetCombo()
     {
@@ -33,16 +33,21 @@ public static class ComboManager
 
     public static void FadingOutComboTxt()   //To visually show the timer of the combo (without implementing a timer) [THIS NEEDS TO BE CALLED IN A UPDATE FUNCTION]
     {
-        if (transparencyVal >= 0)
+        Debug.Log(combo);
+        Debug.Log(transparencyVal);
+        if (transparencyVal > 0)
         {
             comboText.color = new Color(comboText.color.r, comboText.color.g, comboText.color.b, transparencyVal -= TimeToFade * Time.deltaTime);
 
-            if (transparencyVal == 0)
-            {
-                combo = 0;
-                comboText.color = new Color(comboText.color.r, comboText.color.g, comboText.color.b, transparencyVal);
+           
+        }
 
-            }
+        else if (transparencyVal <= 0)
+        {
+            combo = 0;
+            transparencyVal = 1f;
+            comboText.color = new Color(comboText.color.r, comboText.color.g, comboText.color.b, transparencyVal);
+
         }
     }
 }
