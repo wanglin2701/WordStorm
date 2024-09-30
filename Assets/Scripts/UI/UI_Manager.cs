@@ -21,7 +21,9 @@ public static class UI_Manager
 
     //Game UI Elements
     private static TextMeshProUGUI scoreTxt;
-    private static TextMeshProUGUI comboTxt;   
+    private static TextMeshProUGUI comboTxt; 
+    
+    private static TMP_InputField inputField;
 
     public static void SetTeamLogoScene()
     {
@@ -74,6 +76,12 @@ public static class UI_Manager
     public static TextMeshProUGUI GetComboTxt()
     {
         return comboTxt;
+    }
+
+    public static void SetInputField()
+    {
+        inputField = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
+        inputField.ActivateInputField();
     }
 
 

@@ -56,6 +56,9 @@ public class GameController : MonoBehaviour
         else if(SceneHandler.GetActiveSceneName() == "game")
         {
             UI_Manager.SetGameScene();
+            UI_Manager.SetInputField();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
     }
@@ -80,6 +83,11 @@ public class GameController : MonoBehaviour
         else if(SceneHandler.GetActiveSceneName() == "game")
         {
             ComboManager.FadingOutComboTxt();  //Keeps updating the indication for the combo timer (Which is fading out)
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                UI_Manager.SetInputField();
+            }
         }
     }
 
