@@ -27,11 +27,11 @@ public class PlayerInput : MonoBehaviour
         {
             playerAttack.FireBullet(enemyPrefix); // Pass the correct prefix to the FireBullet method
 
-            ScoreManager.RewardScores(word, 1);  //Reward Score based on the number letters
-            UI_Manager.UpdateScoreTmpro();
-
             ComboManager.ResetComboTimer();
             UI_Manager.UpdateComboTmpro();
+
+            ScoreManager.RewardScores(word);  //Reward Score based on the number letters
+            UI_Manager.UpdateScoreTmpro();
 
         }
 

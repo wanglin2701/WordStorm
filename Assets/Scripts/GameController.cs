@@ -61,7 +61,6 @@ public class GameController : MonoBehaviour
         else if(SceneHandler.GetActiveSceneName() == "game")
         {
             UI_Manager.SetGameScene();
-            UI_Manager.SetInputField();
         }
 
     }
@@ -85,17 +84,9 @@ public class GameController : MonoBehaviour
 
         else if(SceneHandler.GetActiveSceneName() == "game")
         {
-
-            //if (ComboManager.isComgoingCurrentlyRunning())
-            //{
-            //    Debug.Log("trigger coroutine"); 
-            //    StartCoroutine(WaitforSecond(20f, "Combo"));
-            //}
-
-            //else
-            //{
-                ComboManager.FadingOutComboTxt(); //Keeps updating the indication for the combo timer (Which is fading out)
-            //}
+   
+            ComboManager.FadingOutComboTxt(); //Keeps updating the indication for the combo timer (Which is fading out)
+           
 
             //Checking Input
             if (Input.GetMouseButtonDown(0))

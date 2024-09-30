@@ -21,7 +21,8 @@ public static class UI_Manager
 
     //Game UI Elements
     private static TextMeshProUGUI scoreTxt;
-    private static TextMeshProUGUI comboTxt; 
+    private static TextMeshProUGUI comboTxt;
+    private static TextMeshProUGUI comboWordTxt;
     
     private static TMP_InputField inputField;
 
@@ -59,6 +60,7 @@ public static class UI_Manager
     {
         scoreTxt = GameObject.Find("ScoreTxt").GetComponentInChildren<TextMeshProUGUI>();
         comboTxt = GameObject.Find("ComboTxt").GetComponentInChildren<TextMeshProUGUI>();
+        comboWordTxt = GameObject.Find("ComboWord").GetComponent<TextMeshProUGUI>();
     }
 
     public static void UpdateScoreTmpro()
@@ -70,7 +72,7 @@ public static class UI_Manager
 
     public static void UpdateComboTmpro()
     {
-        comboTxt.text = "x" + ComboManager.GetCombo().ToString();
+        comboTxt.text = ComboManager.GetCombo().ToString();
     }
 
     public static TextMeshProUGUI GetComboTxt()
@@ -85,6 +87,10 @@ public static class UI_Manager
     }
 
 
+    public static TextMeshProUGUI GetComboWordTxt()
+    {
+        return comboWordTxt;
+    }
 
 
 
