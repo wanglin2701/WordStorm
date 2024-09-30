@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1455487}
   - component: {fileID: 1455488}
+  - component: {fileID: 1455489}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -188,6 +189,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!210 &1455489
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455486}
+  m_Enabled: 1
+  m_SortingLayerID: 459646225
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &43450842 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6306376865452529960, guid: 852c6a34d71024c4aa97cdfa9482c2c4, type: 3}
@@ -1362,7 +1375,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000011a5651b
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2091,7 +2104,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 459646225
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1024420138
@@ -2190,6 +2203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068026428}
   - component: {fileID: 1068026429}
+  - component: {fileID: 1068026430}
   m_Layer: 5
   m_Name: GameDetails
   m_TagString: Untagged
@@ -2205,7 +2219,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068026427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2245,6 +2259,29 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!223 &1068026430
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068026427}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 459646225
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &1134297488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,9 +2398,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 459646225
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bc3b1ee1abc528a4bbafd56c0df33c1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3219,6 +3256,7 @@ GameObject:
   - component: {fileID: 1305908608}
   - component: {fileID: 1305908607}
   - component: {fileID: 1305908610}
+  - component: {fileID: 1305908611}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -3395,6 +3433,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1305908607}
+--- !u!223 &1305908611
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305908605}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 459646225
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &1334576465
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,6 +4344,7 @@ GameObject:
   - component: {fileID: 1654709286}
   - component: {fileID: 1654709288}
   - component: {fileID: 1654709287}
+  - component: {fileID: 1654709289}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -4344,6 +4406,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654709285}
   m_CullTransparentMesh: 1
+--- !u!210 &1654709289
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654709285}
+  m_Enabled: 1
+  m_SortingLayerID: 1389257207
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1720051965
 GameObject:
   m_ObjectHideFlags: 0
@@ -5162,9 +5236,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 459646225
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 679898ee439d43d4a8c7bd3892113d71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
