@@ -41,7 +41,6 @@ public static class FadeInOut
         if (isFadingIn == false)  //For fading out
         {
             isFadingOut = true;
-            Debug.Log(transparencyVal);
             if (transparencyVal >= 0)
             {
                 obj.color = new Color(obj.color.r, obj.color.g, obj.color.b, transparencyVal -= TimeToFade * Time.deltaTime);
