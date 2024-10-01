@@ -15,12 +15,15 @@ public static class ScoreManager
         //multiplyer determined by combo / 1
         scoreMultiplyer = ComboManager.GetCombo() / 1.5f;
 
+        Debug.Log("Previous score: " + score);
+
+
         //Add 2 points for each letter
         score += (2 * scoreMultiplyer) * numberLetters;
 
+        Debug.Log("Final score: " + score);
 
         Debug.Log(ComboManager.GetCombo().ToString());  
-        score = score * scoreMultiplyer;
         Debug.Log("Score Multiplyer " + scoreMultiplyer);
 
         int finalScore = (int)score;
