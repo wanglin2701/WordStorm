@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         activeScene = SceneHandler.GetActiveSceneName();
-        if (SceneHandler.GetActiveSceneName() == "LoadingScreen")
+        if (activeScene == "LoadingScreen")
         {
             //Get required needed UI Elements 
             progress_bar = GameObject.FindAnyObjectByType<Slider>();
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
         }
 
-        else if (SceneHandler.GetActiveSceneName() == "game")
+        else if (activeScene == "game")
         {
             UI_Manager.SetInputField();
         }
@@ -43,24 +43,30 @@ public class GameController : MonoBehaviour
 
         //DebugDataReadInBuild();
 
-        if (SceneHandler.GetActiveSceneName() == "LoadingScreen")
+        if (activeScene == "LoadingScreen")
         {
             LoadingScreen.IncrementProgress(progress_bar, 1.00f);
         }
 
-        else if(SceneHandler.GetActiveSceneName() == "TeamLogo")
+        else if(activeScene == "TeamLogo")
         {
             UI_Manager.SetTeamLogoScene();
         } 
 
-        else if(SceneHandler.GetActiveSceneName() == "StartScreen")
+        else if(activeScene == "StartScreen")
         {
             UI_Manager.SetStartScreenScene();
         }
 
-        else if(SceneHandler.GetActiveSceneName() == "game")
+        else if(activeScene == "game")
         {
             UI_Manager.SetGameScene();
+        }
+
+        else if(activeScene == "GameOver")
+        {
+            UI_Manager.SetGameoverScreen();
+
         }
 
     }

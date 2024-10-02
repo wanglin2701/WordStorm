@@ -26,6 +26,9 @@ public static class UI_Manager
     
     private static TMP_InputField inputField;
 
+    //Gameover UI
+    private static Button homeBTN;
+
     public static void SetTeamLogoScene()
     {
         teamLogo = GameObject.FindObjectOfType<Image>();
@@ -90,6 +93,13 @@ public static class UI_Manager
     public static TextMeshProUGUI GetComboWordTxt()
     {
         return comboWordTxt;
+    }
+
+    public static void SetGameoverScreen()
+    {
+        homeBTN = GameObject.Find("HomeBTN").GetComponent<Button>();
+        homeBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Back to Home";
+        homeBTN.onClick.AddListener(SceneHandler.LoadStartScreen);
     }
 
 
