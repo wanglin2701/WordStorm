@@ -101,16 +101,16 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log($"Boss GameObject active status post-wait: {bossGameObject.activeSelf}");
             
             // Now that we've waited a frame after activation, retrieve and start the boss fight
-            BossManager bossManager = bossGameObject.GetComponent<BossManager>();
-            if (bossManager != null && bossGameObject.activeInHierarchy)
-            {
-                bossManager.StartBossFight(); // Now start the fight which will start the coroutine
-                Debug.Log("Boss Fight Started");
-            }
-            }
-            else
-            {
-                Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
+            //BossManager bossManager = bossGameObject.GetComponent<BossManager>();
+            // if (bossManager != null && bossGameObject.activeInHierarchy)
+            // {
+            //     bossManager.StartBossFight(); // Now start the fight which will start the coroutine
+            //     Debug.Log("Boss Fight Started");
+            // }
+            // }
+            // else
+            // {
+            //     Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
             }
     }
     
