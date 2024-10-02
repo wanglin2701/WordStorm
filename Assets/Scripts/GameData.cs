@@ -38,8 +38,17 @@ public static class GameData
 
             currentPrefix_WordList = DataManager.ConvertArraytoList(current_Prefix_WordArray);
 
-            //Add to Dictionary
-            WordStormDictionary.Add(prefix, currentPrefix_WordList);
+            if (WordStormDictionary.ContainsKey(prefix))
+            {
+                WordStormDictionary[prefix] = currentPrefix_WordList;  //Update the word list
+            }
+
+            else  //If the prefix key does not exist in the dictionary
+            {
+                //Add to Dictionary
+                WordStormDictionary.Add(prefix, currentPrefix_WordList);
+            }
+      
 
           
 
