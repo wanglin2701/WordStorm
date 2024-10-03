@@ -55,8 +55,7 @@ public static class UI_Manager
 
         quitBTN = startScreenBTN_array[2];
         quitBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Quit";
-
-        //quitBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
+        quitBTN.onClick.AddListener(Application.Quit);  //TO BE ADDED IN FUTURE
     }
 
     public static void SetGameScene()

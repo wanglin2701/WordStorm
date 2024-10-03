@@ -9,16 +9,20 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefabs; // Array to hold different enemy prefabs (pro, com, dis, anti)
     public Transform[] spawnPoints;   // Array of spawn points for enemies
     public float spawnRate = 2f;      // Rate of spawning enemies in seconds
-    private int waveNumber = 0;        // Start at wave 1
+    private int waveNumber = 1;        // Start at wave 1
     public TextMeshProUGUI timerText; // Timer display for the UI
 
     private float levelStartTime;     // Time when the level starts
     private bool levelActive = true;  // Flag to check if the level is still active
+
+    public TextMeshProUGUI LevelInfo;
+    
     public GameObject bossGameObject; // Reference to the boss GameObject
     public GameObject popupPanel;     // Reference to the popup panel UI
     
     void Start()
     {
+        LevelInfo.text = "Level 1 | Wave " + waveNumber;
         levelStartTime = Time.time;  // Record the start time of the level
         StartCoroutine(SpawnWave());
         StartCoroutine(UpdateTimer());
@@ -45,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
 
             waveNumber++;
+            LevelInfo.text = "Level 1 | Wave " + waveNumber;
+
             if (waveNumber < 3)
             {
                 continue;  // Proceed to next iteration without delay
