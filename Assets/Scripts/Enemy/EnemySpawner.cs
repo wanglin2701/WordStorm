@@ -76,6 +76,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(int type)
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+
         Instantiate(enemyPrefabs[type], randomSpawnPoint.position, Quaternion.identity);
     }
 
