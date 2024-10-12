@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public static class GameData 
 {
-    public static Dictionary<string, List<string>> WordStormDictionary = new Dictionary<string, List<string>>();
+    private static Dictionary<string, List<string>> WordStormDictionary = new Dictionary<string, List<string>>();
 
-    public static string[] prefixList;
+    private static string[] prefixList;
+
+    private static EnemyWaveList enemyWaveList;
+    private static EnemyList enemyList;
 
     public static void ReadGameData()  //Read all the Game Data
     {
         ReadDictionaryTextFile();
+        SetEnemyWave();
+        SetEnemy();
     }
+
+    #region Txt File Reading
 
     public static void ReadDictionaryTextFile()
     {
@@ -57,6 +65,11 @@ public static class GameData
       
     }
 
+    #endregion
+
+    #region Get Methods
+
+    //Get Prefix List
     public static string[] GetPrefixList()
     {
         return prefixList;
@@ -84,4 +97,77 @@ public static class GameData
         }
 
     }
+
+    public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
+    {
+        //Get all the prefix based on the number of letters first
+        List<string> filteredPrefixes = new List<string>();
+        
+        foreach(string prefix in prefixList)
+        {
+            if(prefix.Length == numberLetter)
+            {
+                filteredPrefixes.Add(prefix);
+            }
+        }
+
+        int randomIndex = Random.Range(0, filteredPrefixes.Count);
+
+        return filteredPrefixes[randomIndex];
+
+    }
+
+    //Get Enemy Wave Methods
+    public static EnemyWaveList GetEnemyWaveList()
+    {
+        return enemyWaveList;
+    }
+
+    public static EnemyWave GetEnemyWaveByNo(int waveNo)  //Returns wave information based on the wave number
+    {
+        foreach(EnemyWave wave in enemyWaveList.EnemyWave)
+        {
+            if(wave.waveNo == waveNo)
+            {
+                return wave;
+            }
+        }
+
+        return null;
+    }
+
+    //Get Enemy Methods
+    public static Enemy GetEnemyByType(string type)
+    {
+        foreach(Enemy enemy in enemyList.Enemy)
+        {
+            if(enemy.enemyType == type)
+            {
+                return enemy;
+            }
+        }
+        return null;
+    }
+
+
+    
+    #endregion
+
+    #region JSON File Read
+
+    public static void SetEnemyWave()
+    {
+        string enemyWaveString;
+        enemyWaveString = JsonHandler.LoadJsonFile("EnemyWave");  
+        enemyWaveList = JsonUtility.FromJson<EnemyWaveList>(enemyWaveString);   //Creates the obj based on the json string
+    }
+
+    public static void SetEnemy()
+    {
+        string enemyString;
+        enemyString = JsonHandler.LoadJsonFile("Enemy");
+        enemyList = JsonUtility.FromJson<EnemyList>(enemyString);   //Creates the obj based on the json string
+    }
+
+    #endregion
 }

@@ -27,6 +27,15 @@ public class GameController : MonoBehaviour
             progress_bar = GameObject.FindAnyObjectByType<Slider>();
             GameData.ReadGameData();
 
+            //Check data
+            Debug.Log("=========GET RANDOM PREFIX BASED ON LETTERS==============");
+            Debug.Log(GameData.GetEnemyWaveList().EnemyWave[2].enemyCount);
+            Debug.Log(GameData.GetEnemyWaveByNo(2).waveNo);
+            Debug.Log(GameData.GetEnemyByType("Normal").desc);
+            Debug.Log(GameData.GetEnemyByType("Armored").desc);
+
+
+
         }
 
         else if (activeScene == "game")

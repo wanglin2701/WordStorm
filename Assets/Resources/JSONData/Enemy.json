@@ -1,0 +1,35 @@
+[
+  {
+    "enemyNo": 1,
+    "enemyID": 101,
+    "desc": "Normal minions",
+    "enemyType": "Normal",
+    "health": 1,
+    "speed": 2,
+    "stoppingDist": 1,
+    "enemyAvoidanceDist": 1,
+    "separationForce": 2
+  },
+  {
+    "enemyNo": 2,
+    "enemyID": 102,
+    "desc": "Armored Minion",
+    "enemyType": "Armored",
+    "health": 2,
+    "speed": 1,
+    "stoppingDist": 1,
+    "enemyAvoidanceDist": 1,
+    "separationForce": 2
+  },
+  {
+    "enemyNo": 3,
+    "enemyID": 103,
+    "desc": "Boss that can spawn various types of enemies. Kill it in the time limit to survive.",
+    "enemyType": "Boss",
+    "health": 50,
+    "speed": 0,
+    "stoppingDist": 0,
+    "enemyAvoidanceDist": 0,
+    "separationForce": 0
+  }
+]

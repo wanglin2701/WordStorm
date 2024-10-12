@@ -1,0 +1,30 @@
+[
+  {
+    "waveNo": 1,
+    "enemyID": "101,102,103",
+    "enemyCount": 4,
+    "spawnRate": 6,
+    "totalHealth": 4
+  },
+  {
+    "waveNo": 2,
+    "enemyID": "101,102,103,104",
+    "enemyCount": 7,
+    "spawnRate": 6,
+    "totalHealth": 9
+  },
+  {
+    "waveNo": 3,
+    "enemyID": "101,102,103,104",
+    "enemyCount": 10,
+    "spawnRate": 6,
+    "totalHealth": 14
+  },
+  {
+    "waveNo": 4,
+    "enemyID": 105,
+    "enemyCount": 1,
+    "spawnRate": 6,
+    "totalHealth": 50
+  }
+]
