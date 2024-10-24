@@ -2662,7 +2662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -18.8, y: 51.87}
+  m_AnchoredPosition: {x: -18.8, y: 51.869995}
   m_SizeDelta: {x: 1591.2, y: 115.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305908607
@@ -3171,10 +3171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 1870185760602347264, guid: 67922408abeb25b47af68875a4f9efd1, type: 3}
-  - {fileID: 1870185760602347264, guid: 67922408abeb25b47af68875a4f9efd1, type: 3}
-  - {fileID: 1870185760602347264, guid: 67922408abeb25b47af68875a4f9efd1, type: 3}
-  - {fileID: 1870185760602347264, guid: 67922408abeb25b47af68875a4f9efd1, type: 3}
+  - {fileID: 5973293730012095225, guid: 577fd30bad801824596fb7cbf5d47152, type: 3}
+  - {fileID: 8327652470098354438, guid: 5f038ceddc7cae940bcccf8cd7209616, type: 3}
   spawnPoints:
   - {fileID: 1513224875}
   - {fileID: 825522118}
@@ -3270,50 +3268,6 @@ SortingGroup:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!1 &1720051965
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1720051966}
-  - component: {fileID: 1720051967}
-  m_Layer: 0
-  m_Name: PrefixManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1720051966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720051965}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14211991, y: -0.5625145, z: -0.21234661}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1720051967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720051965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb2196e9126aa1418d8c7120b232d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1774182453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3933,5 +3887,4 @@ SceneRoots:
   - {fileID: 1526186530}
   - {fileID: 2083660447}
   - {fileID: 1591242065}
-  - {fileID: 1720051966}
   - {fileID: 1209618972}

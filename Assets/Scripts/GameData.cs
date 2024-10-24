@@ -6,6 +6,7 @@ using UnityEngine;
 public static class GameData 
 {
     private static Dictionary<string, List<string>> WordStormDictionary = new Dictionary<string, List<string>>();
+    private static Dictionary<string, List<string>> prefixesByType = new Dictionary<string, List<string>>();
 
     private static string[] prefixList;
 
@@ -28,6 +29,16 @@ public static class GameData
         prefixList = DataManager.ReadTXTFile("newline", prefixTXT);
 
         SetDictionaryGameData(prefixTXT);
+
+        prefixesByType["Normal"] = new List<string>();
+        prefixesByType["Armored"] = new List<string>();
+        foreach (string prefix in prefixList)
+        {
+            if (prefix.Length <= 3) 
+                prefixesByType["Normal"].Add(prefix);
+            else 
+                prefixesByType["Armored"].Add(prefix);
+        }
 
     }
 
@@ -96,6 +107,14 @@ public static class GameData
             return null;
         }
 
+    }
+
+    public static string GetRandomPrefix(string type)
+    {
+        if (!prefixesByType.ContainsKey(type) || prefixesByType[type].Count == 0)
+            return null;
+        List<string> validPrefixes = prefixesByType[type];
+        return validPrefixes[Random.Range(0, validPrefixes.Count)];
     }
 
     public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
@@ -170,4 +189,5 @@ public static class GameData
     }
 
     #endregion
+    
 }
