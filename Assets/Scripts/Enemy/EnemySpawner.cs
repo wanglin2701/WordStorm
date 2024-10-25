@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     public TextMeshProUGUI LevelInfo;
     public GameObject bossGameObject; // Reference to the boss GameObject
     public GameObject popupPanel;    // Reference to the popup panel UI
-    
+
     void Start()
     {
         LevelInfo.text = "Level 1 | Wave " + waveNumber;
@@ -32,38 +32,53 @@ public class EnemySpawner : MonoBehaviour
         EnemyWaveList waves = GameData.GetEnemyWaveList();
         while (waveNumber <= waves.EnemyWave.Length)
         {
-            EnemyWave currentWave = GameData.GetEnemyWaveByNo(waveNumber);
-            foreach (string enemyID in currentWave.enemyID.Split(','))
+            foreach (EnemyWave wave in waves.EnemyWave)
             {
-                for (int i = 0; i < currentWave.enemyCount; i++)
+                string[] enemyIDs = wave.enemyID.Split(',');
+                foreach (string enemyID in enemyIDs)
                 {
-                    int enemyIndex = int.Parse(enemyID.Trim()) - 1;
-                    SpawnEnemy(enemyIndex);
-                    yield return new WaitForSeconds(currentWave.spawnRate);
+                    if (int.TryParse(enemyID.Trim(), out int enemyIndex))
+                    {
+                        print($"Enemy Index: {enemyIndex}");
+
+                        if (wave.enemyCount > 0)
+                        {
+                            for (int i = 0; i < wave.enemyCount; i++)
+                            {
+                                SpawnEnemy(enemyIndex);
+                                yield return new WaitForSeconds(wave.spawnRate);
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogError($"Wave's Enemy count is 0 or less. Check your JSON data for enemy IDs.");
+                        }
+                    }
+
+                    yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+
+                    waveNumber++;
+                    LevelInfo.text = "Level 1 | Wave " + waveNumber;
+
+                    if (waveNumber > waves.EnemyWave.Length)
+                    {
+                        levelActive = false;
+                        break;
+                    }
+                    
                 }
-            }
-
-            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
-
-            waveNumber++;
-            LevelInfo.text = "Level 1 | Wave " + waveNumber;
-
-            if (waveNumber > waves.EnemyWave.Length)
-            {
-                levelActive = false;
-                break;
-            }
-        }   
 
         StartBossLevel();
-}
+            }
+        }
+    }
 
     private IEnumerator UpdateTimer()
     {
         while (levelActive)
         {
             float elapsedTime = Time.time - levelStartTime;
-            string minutes = ((int) elapsedTime / 60).ToString("00");
+            string minutes = ((int)elapsedTime / 60).ToString("00");
             string seconds = (elapsedTime % 60).ToString("00");
             timerText.text = $"{minutes}:{seconds}";
             yield return new WaitForSeconds(0.1f);
@@ -73,64 +88,38 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(int type)
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-        Instantiate(enemyPrefabs[type], randomSpawnPoint.position, Quaternion.identity);
-    
-        // Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        // var enemyData = GameData.GetEnemyByID(enemyID);
-
-        // if (enemyData != null)
-        // {
-        //     GameObject enemyPrefab = enemyPrefabs[enemyData.enemyNo - 1];
-        //     Instantiate(enemyPrefab, randomSpawnPoint.position, Quaternion.identity);
-        // }
+        // If the type / EnemyID is valid in database
+        if (type == GameData.GetEnemyByID(type).enemyID)
+        {
+            //Search Array
+            foreach (GameObject enemy in enemyPrefabs)
+            {
+                if (enemy.GetComponent<EnemyAI>().ID == type)
+                {
+                    Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);
+                    return;
+                }
+                else continue;
+            }
+        }
+        else
+        {
+            Debug.LogError($"Invalid enemy type index: {type}. Ensure enemyPrefabs are correctly set.");
+        }
     }
 
 
+    private void StartBossLevel()
+    {
+        //         // Show the popup panel
+        //         if (popupPanel != null)
+        //         {
+        //             popupPanel.SetActive(true);
+        //         }
 
-
-    //     private IEnumerator SpawnWave()
-//     {
-//         while (waveNumber < 3) // Assuming there are 3 waves before the boss
-//         {
-//             int[] enemiesTypeCount = GetEnemiesCountByWave(waveNumber);
-            
-//             for (int i = 0; i < enemiesTypeCount[0]; i++)
-//             {
-//                 SpawnEnemy(Random.Range(0, 3));  // Spawns one of the Normal Minion prefabs
-//                 yield return new WaitForSeconds(spawnRate);
-//             }
-//             for (int j = 0; j < enemiesTypeCount[1]; j++)
-//             {
-//                 SpawnEnemy(3);  // Always spawns the Armored Minion prefab
-//                 yield return new WaitForSeconds(spawnRate);
-//             }
-
-//             // Wait until all enemies from the current wave are cleared
-//             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
-
-//             waveNumber++;
-//             LevelInfo.text = "Level 1 | Wave " + waveNumber;
-
-//             if (waveNumber < 3)
-//             {
-//                 continue;  // Proceed to next iteration without delay
-//             }
-//         }
-        
-//         levelActive = false;}
-
-     private void StartBossLevel()
-     {
-//         // Show the popup panel
-//         if (popupPanel != null)
-//         {
-//             popupPanel.SetActive(true);
-//         }
-
-//         // Wait for a brief moment with the popup then start the boss level
-//         StartCoroutine(StartBossFightAfterDelay(2)); // 2 seconds for reading the popup
-     }
+        //         // Wait for a brief moment with the popup then start the boss level
+        //         StartCoroutine(StartBossFightAfterDelay(2)); // 2 seconds for reading the popup
+    }
 
 }
 
@@ -145,10 +134,10 @@ public class EnemySpawner : MonoBehaviour
 //         {
 //             bossGameObject.SetActive(true); // Activate the boss
 //             Debug.Log("Boss GameObject Activated");
-            
+
 //             yield return null;  // Wait for one frame to ensure the GameObject is fully activated
 //             Debug.Log($"Boss GameObject active status post-wait: {bossGameObject.activeSelf}");
-            
+
 //             // Now that we've waited a frame after activation, retrieve and start the boss fight
 //             //BossManager bossManager = bossGameObject.GetComponent<BossManager>();
 //             // if (bossManager != null && bossGameObject.activeInHierarchy)
@@ -162,15 +151,3 @@ public class EnemySpawner : MonoBehaviour
 //             //     Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
 //             }
 //     }
-    
-//     // private int[] GetEnemiesCountByWave(int wave)
-//     // {
-//     //     switch (wave)
-//     //     {
-//     //         case 0: return new int[]{4, 0};
-//     //         case 1: return new int[]{5, 2};
-//     //         case 2: return new int[]{6, 4};
-//     //         default: return new int[]{0, 0};
-//     //     }
-//     // }
-// }

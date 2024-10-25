@@ -3175,7 +3175,7 @@ MonoBehaviour:
   spawnRate: 6
   timerText: {fileID: 364554897}
   LevelInfo: {fileID: 1334576467}
-  bossGameObject: {fileID: 0}
+  bossGameObject: {fileID: 3244434206618227149, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
   popupPanel: {fileID: 0}
 --- !u!1 &1654709285
 GameObject:

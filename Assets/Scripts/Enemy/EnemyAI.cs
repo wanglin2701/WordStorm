@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class EnemyAI : MonoBehaviour
 {
+
+    public int ID;
     public GameObject player;
     public float speed;
     public float stoppingDistance = 1f; // The minimum distance between the enemy and the player
@@ -22,8 +26,12 @@ public class EnemyAI : MonoBehaviour
 
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
 
+    public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
+
     private void Start()
     {
+        SetUpPrefix();
+
         //Get Dictionary data
         WSDictionary = GameData.GetWordStormDictionary();
 
@@ -43,7 +51,7 @@ public class EnemyAI : MonoBehaviour
             spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
         }
     }
-    
+
     private void Update()
     {
         // Calculate direction towards the player
@@ -102,7 +110,7 @@ public class EnemyAI : MonoBehaviour
 
         return separationForce;
     }
-    
+
     // Call this method to apply damage to the enemy
     public void TakeDamage(int damage)
     {
@@ -115,7 +123,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    
+
     // Call this when an enemy is destroyed
     public void DestroyEnemy()
     {
@@ -139,7 +147,7 @@ public class EnemyAI : MonoBehaviour
                 // Check if the player's input matches any valid word exactly
                 if (validWords.Contains(playerInput))
                 {
-                    
+
                     if (usedWords.ContainsKey(playerInput))
                     {
                         if (usedWords[playerInput] >= 2)  //For testing purpose, each word can only use twice
@@ -159,29 +167,45 @@ public class EnemyAI : MonoBehaviour
                         usedWords.Add(playerInput, +1);
 
                     }
-
-                    //Debug.Log(playerInput);
-                    //Debug.Log(usedWords[playerInput]);
-
                     return enemy.enemyPrefix; // Return the matching prefix
                 }
             }
 
-
-            //// Get the list of valid words for the enemy's prefix
-            //if (prefixDictionary.wordDictionary.ContainsKey(enemy.enemyPrefix))
-            //{
-            //    List<string> validWords = prefixDictionary.wordDictionary[enemy.enemyPrefix];
-
-            //    // Check if the player's input matches any valid word exactly
-            //    if (validWords.Contains(playerInput))
-            //    {
-            //        return enemy.enemyPrefix; // Return the matching prefix
-            //    }
-            //}
         }
         return null; // Return null if no match is found
     }
+
+    void SetUpPrefix()
+    {
+        TextUI.text = enemyPrefix;
+
+        
+
+
+    }
+
+    // if the filteredPrefixes =< 3 letter count, then it is normal enemy, ID 101
+    // else if the filteredPrefixes > 3 letter count, then it is armored enemy, ID 102
+    // else if the filteredPrefixes = 0 then no need spawn
+
+    // public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
+    // {
+    //     //Get all the prefix based on the number of letters first
+    //     List<string> filteredPrefixes = new List<string>();
+        
+    //     foreach(string prefix in prefixList)
+    //     {
+    //         if(prefix.Length == numberLetter)
+    //         {
+    //             filteredPrefixes.Add(prefix);
+    //         }
+    //     }
+
+    //     int randomIndex = Random.Range(0, filteredPrefixes.Count);
+
+    //     return filteredPrefixes[randomIndex];
+    //  }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

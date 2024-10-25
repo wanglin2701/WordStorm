@@ -109,13 +109,13 @@ public static class GameData
 
     }
 
-    public static string GetRandomPrefix(string type)
-    {
-        if (!prefixesByType.ContainsKey(type) || prefixesByType[type].Count == 0)
-            return null;
-        List<string> validPrefixes = prefixesByType[type];
-        return validPrefixes[Random.Range(0, validPrefixes.Count)];
-    }
+    // public static string GetRandomPrefix(string type)
+    // {
+    //     if (!prefixesByType.ContainsKey(type) || prefixesByType[type].Count == 0)
+    //         return null;
+    //     List<string> validPrefixes = prefixesByType[type];
+    //     return validPrefixes[Random.Range(0, validPrefixes.Count)];
+    // }
 
     public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
     {
@@ -168,6 +168,17 @@ public static class GameData
         return null;
     }
 
+public static Enemy GetEnemyByID(int ID)
+    {
+        foreach(Enemy enemy in enemyList.Enemy)
+        {
+            if(enemy.enemyID == ID)
+            {
+                return enemy;
+            }
+        }
+        return null;
+    }
 
     
     #endregion
