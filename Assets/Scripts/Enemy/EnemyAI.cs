@@ -177,35 +177,23 @@ public class EnemyAI : MonoBehaviour
 
     void SetUpPrefix()
     {
-        TextUI.text = enemyPrefix;
+        // Determine prefix based on random number of letters (e.g., 2-5 letters).
+        var (prefix, enemyID) = GameData.GetRandomPrefixBasedOnNumberLetters(Random.Range(2, 5));
 
-        
+        if (!string.IsNullOrEmpty(prefix) && enemyID != 0) 
+        {
+            enemyPrefix = prefix;
+            ID = enemyID;
 
-
+            // Display the prefix on the enemy’s TextMeshProUGUI component
+            if (TextUI != null)
+                TextUI.text = enemyPrefix;
+        }
+        else
+        {
+            Debug.LogWarning("No prefix found for this enemy or enemyID is invalid.");
+        }
     }
-
-    // if the filteredPrefixes =< 3 letter count, then it is normal enemy, ID 101
-    // else if the filteredPrefixes > 3 letter count, then it is armored enemy, ID 102
-    // else if the filteredPrefixes = 0 then no need spawn
-
-    // public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
-    // {
-    //     //Get all the prefix based on the number of letters first
-    //     List<string> filteredPrefixes = new List<string>();
-        
-    //     foreach(string prefix in prefixList)
-    //     {
-    //         if(prefix.Length == numberLetter)
-    //         {
-    //             filteredPrefixes.Add(prefix);
-    //         }
-    //     }
-
-    //     int randomIndex = Random.Range(0, filteredPrefixes.Count);
-
-    //     return filteredPrefixes[randomIndex];
-    //  }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -221,3 +209,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 }
+
+    // if the filteredPrefixes =< 3 letter count, then it is normal enemy, ID 101
+    // else if the filteredPrefixes > 3 letter count, then it is armored enemy, ID 102
+    // else if the filteredPrefixes = 0 then no need spawn

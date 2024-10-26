@@ -117,7 +117,7 @@ public static class GameData
     //     return validPrefixes[Random.Range(0, validPrefixes.Count)];
     // }
 
-    public static string GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
+    public static (string prefix, int enemyID) GetRandomPrefixBasedOnNumberLetters(int numberLetter)  //Returns a random prefix based on the number of letter prefix needed
     {
         //Get all the prefix based on the number of letters first
         List<string> filteredPrefixes = new List<string>();
@@ -130,9 +130,17 @@ public static class GameData
             }
         }
 
-        int randomIndex = Random.Range(0, filteredPrefixes.Count);
+        // If no prefix found for given length, return (null, 0)
+        if (filteredPrefixes.Count == 0)
+            return (null, 0);
 
-        return filteredPrefixes[randomIndex];
+        int randomIndex = Random.Range(0, filteredPrefixes.Count);
+        string selectedPrefix = filteredPrefixes[randomIndex];
+
+        // Determine enemy ID
+        int enemyID = selectedPrefix.Length <= 3 ? 101 : 102;
+
+        return (selectedPrefix, enemyID);
 
     }
 

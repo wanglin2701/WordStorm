@@ -85,29 +85,46 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // private void SpawnEnemy(int type)
+    // {
+    //     Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+    //     // If the type / EnemyID is valid in database
+    //     if (type == GameData.GetEnemyByID(type).enemyID)
+    //     {
+    //         //Search Array
+    //         foreach (GameObject enemy in enemyPrefabs)
+    //         {
+    //             if (enemy.GetComponent<EnemyAI>().ID == type)
+    //             {
+    //                 Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);
+    //                 return;
+    //             }
+    //             else continue;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         Debug.LogError($"Invalid enemy type index: {type}. Ensure enemyPrefabs are correctly set.");
+    //     }
+    // }
+
     private void SpawnEnemy(int type)
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        // If the type / EnemyID is valid in database
-        if (type == GameData.GetEnemyByID(type).enemyID)
+
+        foreach (GameObject enemy in enemyPrefabs)
         {
-            //Search Array
-            foreach (GameObject enemy in enemyPrefabs)
+            EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+            
+            if (enemyAI != null && enemyAI.ID == type)
             {
-                if (enemy.GetComponent<EnemyAI>().ID == type)
-                {
-                    Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);
-                    return;
-                }
-                else continue;
+                Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);
+                return;
             }
         }
-        else
-        {
-            Debug.LogError($"Invalid enemy type index: {type}. Ensure enemyPrefabs are correctly set.");
-        }
-    }
 
+        Debug.LogError($"Enemy ID {type} not found in enemyPrefabs array.");
+    }
 
     private void StartBossLevel()
     {

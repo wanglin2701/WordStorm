@@ -1,7 +1,7 @@
 [
   {
     "waveNo": 1,
-    "enemyID": "101",
+    "enemyID": "101,102",
     "enemyCount": 4,
     "spawnRate": 6,
     "totalHealth": 4
