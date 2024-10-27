@@ -17,8 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     public TextMeshProUGUI LevelInfo;
     public GameObject bossGameObject; // Reference to the boss GameObject
-    public GameObject popupPanel;    // Reference to the popup panel UI
-
+    
     void Start()
     {
         LevelInfo.text = "Level 1 | Wave " + waveNumber;
@@ -85,29 +84,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // private void SpawnEnemy(int type)
-    // {
-    //     Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-    //     // If the type / EnemyID is valid in database
-    //     if (type == GameData.GetEnemyByID(type).enemyID)
-    //     {
-    //         //Search Array
-    //         foreach (GameObject enemy in enemyPrefabs)
-    //         {
-    //             if (enemy.GetComponent<EnemyAI>().ID == type)
-    //             {
-    //                 Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);
-    //                 return;
-    //             }
-    //             else continue;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError($"Invalid enemy type index: {type}. Ensure enemyPrefabs are correctly set.");
-    //     }
-    // }
-
     private void SpawnEnemy(int type)
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
@@ -128,43 +104,42 @@ public class EnemySpawner : MonoBehaviour
 
     private void StartBossLevel()
     {
-        //         // Show the popup panel
-        //         if (popupPanel != null)
-        //         {
-        //             popupPanel.SetActive(true);
-        //         }
+                // Show the popup panel
+                if (bossGameObject != null)
+                {
+                    bossGameObject.SetActive(true);
+                }
 
-        //         // Wait for a brief moment with the popup then start the boss level
-        //         StartCoroutine(StartBossFightAfterDelay(2)); // 2 seconds for reading the popup
+                // Wait for a brief moment with the popup then start the boss level
+                StartCoroutine(StartBossFightAfterDelay(2)); // 2 seconds for reading the popup
     }
 
+    private IEnumerator StartBossFightAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (bossGameObject != null)
+        {
+            bossGameObject.SetActive(false);
+        }
+        if (bossGameObject != null)
+        {
+            bossGameObject.SetActive(true); // Activate the boss
+            Debug.Log("Boss GameObject Activated");
+
+            yield return null;  // Wait for one frame to ensure the GameObject is fully activated
+            Debug.Log($"Boss GameObject active status post-wait: {bossGameObject.activeSelf}");
+
+            // Now that we've waited a frame after activation, retrieve and start the boss fight
+            BossManager bossManager = bossGameObject.GetComponent<BossManager>();
+            if (bossManager != null && bossGameObject.activeInHierarchy)
+            {
+                bossManager.StartBossFight(); // Now start the fight which will start the coroutine
+                Debug.Log("Boss Fight Started");
+            }
+            }
+            else
+            {
+                Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
+            }
+    }
 }
-
-//     private IEnumerator StartBossFightAfterDelay(float delay)
-//     {
-//         yield return new WaitForSeconds(delay);
-//         if (popupPanel != null)
-//         {
-//             popupPanel.SetActive(false);
-//         }
-//         if (bossGameObject != null)
-//         {
-//             bossGameObject.SetActive(true); // Activate the boss
-//             Debug.Log("Boss GameObject Activated");
-
-//             yield return null;  // Wait for one frame to ensure the GameObject is fully activated
-//             Debug.Log($"Boss GameObject active status post-wait: {bossGameObject.activeSelf}");
-
-//             // Now that we've waited a frame after activation, retrieve and start the boss fight
-//             //BossManager bossManager = bossGameObject.GetComponent<BossManager>();
-//             // if (bossManager != null && bossGameObject.activeInHierarchy)
-//             // {
-//             //     bossManager.StartBossFight(); // Now start the fight which will start the coroutine
-//             //     Debug.Log("Boss Fight Started");
-//             // }
-//             // }
-//             // else
-//             // {
-//             //     Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
-//             }
-//     }

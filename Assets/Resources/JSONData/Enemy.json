@@ -27,9 +27,9 @@
     "desc": "Boss that can spawn various types of enemies. Kill it in the time limit to survive.",
     "enemyType": "Boss",
     "health": 50,
-    "speed": 0,
-    "stoppingDist": 0,
-    "enemyAvoidanceDist": 0,
-    "separationForce": 0
+    "speed": 1,
+    "stoppingDist": 1,
+    "enemyAvoidanceDist": 1,
+    "separationForce": 2
   }
 ]

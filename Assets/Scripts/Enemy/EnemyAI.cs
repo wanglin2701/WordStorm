@@ -177,14 +177,13 @@ public class EnemyAI : MonoBehaviour
 
     void SetUpPrefix()
     {
-        // Determine prefix based on random number of letters (e.g., 2-5 letters).
-        var (prefix, enemyID) = GameData.GetRandomPrefixBasedOnNumberLetters(Random.Range(2, 5));
+         int letterCount = ID == 101 ? Random.Range(2, 4) : Random.Range(4, 7);
+        var (prefix, enemyID) = GameData.GetRandomPrefixBasedOnNumberLetters(letterCount);
 
-        if (!string.IsNullOrEmpty(prefix) && enemyID != 0) 
+        if (!string.IsNullOrEmpty(prefix) && enemyID == ID) 
         {
             enemyPrefix = prefix;
-            ID = enemyID;
-
+            
             // Display the prefix on the enemy’s TextMeshProUGUI component
             if (TextUI != null)
                 TextUI.text = enemyPrefix;
