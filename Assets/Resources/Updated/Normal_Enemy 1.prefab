@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ba29795bc9506489775bfbd04bd08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 103
+  ID: 101
   player: {fileID: 0}
   speed: 0.6
   stoppingDistance: 1
@@ -284,7 +284,6 @@ MonoBehaviour:
   separationForce: 2.1
   health: 1
   enemyPrefix: 
-  isBossWave: 1
 --- !u!61 &8115836979223702153
 BoxCollider2D:
   m_ObjectHideFlags: 0

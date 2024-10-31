@@ -18,8 +18,7 @@ public class EnemyAI : MonoBehaviour
     private static int currentEnemies = 0; // Number of enemies currently alive
     public static int enemiesPerWave = 4; // Number of enemies per wave
     public static Transform[] spawnPoints; // Array of spawn points
-
-    //private static PrefixDictionary prefixDictionary; // Word dictionary for prefixes
+    
     private static Dictionary<string, List<string>> WSDictionary;
 
     private static Dictionary<string, int> usedWords = new Dictionary<string, int>();
@@ -27,7 +26,6 @@ public class EnemyAI : MonoBehaviour
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
 
     public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
-    public bool isBossWave; // Indicates if in boss wave
 
     private void Start()
     {
@@ -41,20 +39,11 @@ public class EnemyAI : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player");
         }
-        //if (prefixDictionary == null)
-        //{
-        //    prefixDictionary = FindObjectOfType<PrefixDictionary>();
-        //}
-
+ 
         // Set spawn points if they haven't been set yet
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
             spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
-        }
-
-        if (isBossWave)
-        {
-            SetBossWaveAttributes(); // Initialize boss wave behavior
         }
     }
 
@@ -92,15 +81,7 @@ public class EnemyAI : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)finalDirection, speed * Time.deltaTime);
         }
 
-        if (isBossWave || speed <= 0) return; // Prevent movement if in boss wave
-    }
-    public void SetBossWaveAttributes()
-    {
-        if (isBossWave)
-        {
-            speed = 0; // Boss-spawned enemies do not move
-            health = ID == 102 ? 2 : 1; // Adjust health for Normal and Armored enemies
-        }
+        //if (isBossWave || speed <= 0) return; // Prevent movement if in boss wave
     }
 
     private Vector2 GetSeparationForce()

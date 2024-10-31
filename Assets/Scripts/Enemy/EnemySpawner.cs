@@ -33,7 +33,12 @@ public class EnemySpawner : MonoBehaviour
         {
             if (waveNumber == 4) // Boss wave check
             {
-                StartBossLevel();
+                bossGameObject.SetActive(true);  // Make sure the boss is active
+                BossManager bossManager = bossGameObject.GetComponent<BossManager>();
+                if (bossManager != null)
+                {
+                    bossManager.StartBossFight();
+                }
                 yield break;  // Ends coroutine to stop further spawning
             }
 
@@ -91,16 +96,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void StartBossLevel()
     {
-                // // Show the popup panel
-                // if (bossGameObject != null)
-                // {
-                //     bossGameObject.SetActive(true);
-                // }
-
-                // // Wait for a brief moment with the popup then start the boss level
-                // StartCoroutine(StartBossFightAfterDelay(2)); // 2 seconds for reading the popup
-
-         if (bossGameObject != null)
+        if (bossGameObject != null)
         {
             bossGameObject.SetActive(true);
             BossManager bossManager = bossGameObject.GetComponent<BossManager>();

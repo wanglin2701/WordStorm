@@ -7,6 +7,7 @@ using TMPro;
 public class BossManager : MonoBehaviour
 {
     public int ID;
+    public int waveNo;
     public int bossHealth = 35;
     public int bossLives = 7;
     private float bossTimer = 15f;  // Timer for each prefix challenge
@@ -80,13 +81,13 @@ public class BossManager : MonoBehaviour
     }
     private void SpawnPrefixEnemy()
     {
-         if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1) // Ensure only one enemy is present
+        if (waveNo == 4)
         {
-            int randomIndex = Random.Range(0, enemyPrefabs.Length);
-            var spawnedEnemy = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
-            EnemyAI enemyAI = spawnedEnemy.GetComponent<EnemyAI>();
-            enemyAI.isBossWave = true; // Set the flag for boss wave-specific behavior
-            enemyAI.SetBossWaveAttributes(); // Apply boss-specific attributes
+            for (int i = 0; i < 15; i++)  // Spawning 15 enemies as per the boss's ability
+            {
+                int randomIndex = Random.Range(0, enemyPrefabs.Length);
+                Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+            }
         }
     }
 
