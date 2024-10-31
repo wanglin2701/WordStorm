@@ -171,6 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c30ea4fcdd91f4fb876c27195d980e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 50
+  ID: 103
+  bossHealth: 35
+  bossLives: 7
   bossTimerText: {fileID: 0}
   healthBar: {fileID: 0}
+  bossSpriteRenderer: {fileID: 0}
+  bossSprites: []

@@ -7,34 +7,39 @@ using TMPro;
 public class BossManager : MonoBehaviour
 {
     public int ID;
-    public int bossHealth = 50;
-    private float bossTimer = 60f;
+    public int bossHealth = 35;
+    public int bossLives = 7;
+    private float bossTimer = 15f;  // Timer for each prefix challenge
     public TextMeshProUGUI bossTimerText;
     public Slider healthBar; // Reference to the Slider component
 
+    public Sprite[] damageSprites; // Array to store the sliced sprites
+    private int currentDamageSpriteIndex = 0;
+    public SpriteRenderer bossSpriteRenderer; // Link this to the boss's SpriteRenderer
+
+    public GameObject[] enemyPrefabs; // Prefabs for spawning prefix enemies
+    public Transform spawnPoint; // Spawn point for enemies
+
+    private int enemiesKilled = 0;
+    private int nextKillThreshold = 3;
+    private PlayerHealth playerHealth;
+
     void Start()
     {
+        playerHealth = FindObjectOfType<PlayerHealth>();
         healthBar.maxValue = bossHealth;
         healthBar.value = bossHealth;
-        //StartCoroutine(BossFightTimer());
+        StartCoroutine(BossFightTimer());
     }
 
     void Update()
     {
-        // Update is typically used for constant checks or UI updates
-        if (bossHealth <= 0)
+        if (bossHealth <= 0 || bossLives <= 0)
         {
             Debug.Log("Boss defeated!");
-            // Trigger victory condition, stop the timer
+            
             StopCoroutine(BossFightTimer());
-        }
-    }
-    private void UpdateBossUI(bool show)
-    {
-        bossTimerText.gameObject.SetActive(show);
-        if (healthBar != null)
-        {
-            healthBar.gameObject.SetActive(show);  // Control the visibility of the health bar
+            EndBossFight();
         }
     }
 
@@ -49,20 +54,49 @@ public class BossManager : MonoBehaviour
             if (bossTimer <= 0)
             {
                 Debug.Log("Time's up! Player loses a life or the game.");
-                EndBossFight();
-                break;  // Exit the coroutine loop
+                playerHealth.TakeDamage();  // Damage player directly from timer
+                // Trigger life loss logic for the player here
+                ResetTimer();
             }
+        }
+    }
+
+    public void ResetTimer()
+    {
+        bossTimer = 15f;  // Reset to 15 seconds for each new challenge
+        SpawnPrefixEnemy();
+    }
+
+    public void RegisterEnemyKill()
+    {
+        enemiesKilled++;
+        if (enemiesKilled >= nextKillThreshold)
+        {
+            enemiesKilled = 0;
+            bossLives--;
+            nextKillThreshold = bossLives > 4 ? 3 : 4;
+            ApplyDamageToBoss(1);
+        }
+    }
+    private void SpawnPrefixEnemy()
+    {
+         if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1) // Ensure only one enemy is present
+        {
+            int randomIndex = Random.Range(0, enemyPrefabs.Length);
+            var spawnedEnemy = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+            EnemyAI enemyAI = spawnedEnemy.GetComponent<EnemyAI>();
+            enemyAI.isBossWave = true; // Set the flag for boss wave-specific behavior
+            enemyAI.SetBossWaveAttributes(); // Apply boss-specific attributes
         }
     }
 
     public void ApplyDamageToBoss(int damage)
     {
         bossHealth -= damage;
-        if (healthBar != null)
-        {
-            healthBar.value = bossHealth;  // Update the health bar UI
-        }
+        if (healthBar != null) healthBar.value = bossHealth;
         Debug.Log($"Boss Health: {bossHealth}");
+
+        UpdateBossSprite();
 
         if (bossHealth <= 0)
         {
@@ -70,9 +104,20 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    private void UpdateBossSprite()
+    {
+        if (bossSpriteRenderer != null && damageSprites.Length > 0)
+        {
+            currentDamageSpriteIndex = Mathf.Min(currentDamageSpriteIndex + 1, damageSprites.Length - 1);
+            bossSpriteRenderer.sprite = damageSprites[currentDamageSpriteIndex];
+        }
+    }
+
+    
     public void StartBossFight()
     {
-        bossTimer = 60f; // Reset the timer to 60 seconds
+        bossTimer = 15f; // Reset the timer to 15 seconds
+        ResetTimer();
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
         // Start the coroutine only if this GameObject is active in hierarchy
         StartCoroutine(BossFightTimer());
@@ -88,8 +133,14 @@ public class BossManager : MonoBehaviour
         }
 
         Debug.Log("Boss defeated!");
-        // Here can add any additional logic needed for when the boss fight ends
-        // eg. could load a victory scene or display a win message
-        // fore prefix, have to key in one word in 30 secs. 
+    }
+
+    private void UpdateBossUI(bool show)
+    {
+        bossTimerText.gameObject.SetActive(show);
+        if (healthBar != null)
+        {
+            healthBar.gameObject.SetActive(show);  // Control the visibility of the health bar
+        }
     }
 }

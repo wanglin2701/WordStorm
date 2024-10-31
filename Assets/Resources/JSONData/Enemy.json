@@ -26,7 +26,7 @@
     "enemyID": 103,
     "desc": "Boss that can spawn various types of enemies. Kill it in the time limit to survive.",
     "enemyType": "Boss",
-    "health": 50,
+    "health": 35,
     "speed": 1,
     "stoppingDist": 1,
     "enemyAvoidanceDist": 1,

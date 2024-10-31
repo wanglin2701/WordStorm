@@ -21,6 +21,17 @@ public class PlayerAttack : MonoBehaviour
 
         if (enemy != null)
         {
+            //EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+            
+            // // Check if the enemy is boss-spawned
+            // if (enemyAI != null && enemyAI.isBossSpawnedEnemy)
+            // {
+            //     // Destroy the enemy immediately if it matches the prefix
+            //     Destroy(enemy);
+            //     return; // Exit as we already found and destroyed the target
+            // }
+
+
             // Calculate direction towards the enemy
             direction = (enemy.transform.position - transform.position).normalized;
         }
@@ -47,11 +58,11 @@ public class PlayerAttack : MonoBehaviour
 
   private GameObject FindClosestEnemyWithPrefix(string prefix)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
 

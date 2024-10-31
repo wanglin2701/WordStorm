@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
 
     public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
+    public bool isBossWave; // Indicates if in boss wave
 
     private void Start()
     {
@@ -49,6 +50,11 @@ public class EnemyAI : MonoBehaviour
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
             spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
+        }
+
+        if (isBossWave)
+        {
+            SetBossWaveAttributes(); // Initialize boss wave behavior
         }
     }
 
@@ -85,7 +91,18 @@ public class EnemyAI : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)finalDirection, speed * Time.deltaTime);
         }
+
+        if (isBossWave || speed <= 0) return; // Prevent movement if in boss wave
     }
+    public void SetBossWaveAttributes()
+    {
+        if (isBossWave)
+        {
+            speed = 0; // Boss-spawned enemies do not move
+            health = ID == 102 ? 2 : 1; // Adjust health for Normal and Armored enemies
+        }
+    }
+
     private Vector2 GetSeparationForce()
     {
         Vector2 separationForce = Vector2.zero;
@@ -205,6 +222,15 @@ public class EnemyAI : MonoBehaviour
                 playerHealth.TakeDamage();
                 hasDamagedPlayer = true; // Ensure this enemy only damages the player once
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        BossManager bossManager = FindObjectOfType<BossManager>();
+        if (bossManager != null && ID != 103)  // Ensure it's not the boss itself
+        {
+            bossManager.RegisterEnemyKill();
         }
     }
 }

@@ -276,14 +276,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ba29795bc9506489775bfbd04bd08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 102
+  ID: 103
   player: {fileID: 0}
-  speed: 0.4
+  speed: 0.1
   stoppingDistance: 1
   enemyAvoidanceDistance: 0.8
   separationForce: 2.1
   health: 2
   enemyPrefix: 
+  isBossWave: 1
 --- !u!61 &167317788479356201
 BoxCollider2D:
   m_ObjectHideFlags: 0
