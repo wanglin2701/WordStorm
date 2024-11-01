@@ -3610,6 +3610,7 @@ MonoBehaviour:
   - {fileID: 1774182454}
   spawnRate: 6
   timerText: {fileID: 364554897}
+  skipToBoss: 1
   LevelInfo: {fileID: 1334576467}
   bossGameObject: {fileID: 1778426185}
 --- !u!1 &1654709285
@@ -3842,15 +3843,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4415052623885445499, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4415052623885445499, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4415052623885445499, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_SortingLayerID
-      value: 459646225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3244434206618227149, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_Name
@@ -3859,6 +3860,10 @@ PrefabInstance:
     - target: {fileID: 3244434206618227149, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244434206618227149, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7405842665294487357, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate = 2f;      // Rate of spawning enemies in seconds
     private int waveNumber = 1;        // Start at wave 1
     public TextMeshProUGUI timerText; // Timer display for the UI
+    public bool skipToBoss = false;
 
     private float levelStartTime;     // Time when the level starts
     private bool levelActive = true;  // Flag to check if the level is still active
@@ -18,15 +19,34 @@ public class EnemySpawner : MonoBehaviour
     public TextMeshProUGUI LevelInfo;
     public GameObject bossGameObject; // Reference to the boss GameObject
     
-
-    //start wave 3 during presentation to get straight to boss
-
+    
+    void Awake()
+    {
+        if(skipToBoss)
+        {
+            StopAllCoroutines();
+            StartBossLevel();
+        }
+    }
+    
     void Start()
     {
-        LevelInfo.text = "Level 1 | Wave " + waveNumber;
-        levelStartTime = Time.time;  // Record the start time of the level
-        StartCoroutine(SpawnWave());
-        StartCoroutine(UpdateTimer());
+        if(!skipToBoss)
+        {
+            LevelInfo.text = "Level 1 | Wave " + waveNumber;
+            levelStartTime = Time.time;  // Record the start time of the level
+            StartCoroutine(SpawnWave());
+            StartCoroutine(UpdateTimer());
+        }
+    }
+    private void Update()
+    {
+        // Press 'B' to skip to boss stage for testing
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            StopAllCoroutines();  // Stop any ongoing waves
+            StartBossLevel();
+        }
     }
 
     private IEnumerator SpawnWave()

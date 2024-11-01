@@ -24,8 +24,8 @@ public class EnemyAI : MonoBehaviour
     private static Dictionary<string, int> usedWords = new Dictionary<string, int>();
 
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
-
     public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
+    public bool isBossWave;
 
     private void Start()
     {
@@ -45,6 +45,11 @@ public class EnemyAI : MonoBehaviour
         {
             spawnPoints = GameObject.FindWithTag("SpawnPoint").GetComponentsInChildren<Transform>();
         }
+
+        if (isBossWave)
+        {
+            speed = 0;  // Prevent movement
+        }
     }
 
     private void Update()
@@ -62,6 +67,8 @@ public class EnemyAI : MonoBehaviour
         // Rotate the enemy to face the player
         //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
+        if (isBossWave) return;
+        
         // Calculate direction towards the player
         Vector2 direction = (player.transform.position - transform.position).normalized;
 

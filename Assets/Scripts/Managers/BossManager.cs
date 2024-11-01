@@ -24,6 +24,7 @@ public class BossManager : MonoBehaviour
     private int enemiesKilled = 0;
     private int nextKillThreshold = 3;
     private PlayerHealth playerHealth;
+    private GameObject currentEnemy; // Track the current active enemy
 
     void Start()
     {
@@ -46,17 +47,23 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator BossFightTimer()
     {
-        while (bossTimer > 0)
+        while (bossHealth > 0 && bossLives > 0)
         {
-            bossTimer -= Time.deltaTime;
-            bossTimerText.text = $"Boss Timer: {bossTimer:F2}s";
-            yield return null;
-
-            if (bossTimer <= 0)
+            bossTimer = 15f;
+            
+            // Countdown loop for the 15-second timer
+            while (bossTimer > 0 && currentEnemy != null)
             {
-                Debug.Log("Time's up! Player loses a life or the game.");
-                playerHealth.TakeDamage();  // Damage player directly from timer
-                // Trigger life loss logic for the player here
+                bossTimer -= Time.deltaTime;
+                bossTimerText.text = $"Boss Timer: {bossTimer:F2}s";
+                yield return null;
+            }
+
+            // If the enemy is still present after 15 seconds, the player takes damage
+            if (currentEnemy != null)
+            {
+                Debug.Log("Time's up! Player takes damage.");
+                playerHealth.TakeDamage();
                 ResetTimer();
             }
         }
@@ -65,12 +72,16 @@ public class BossManager : MonoBehaviour
     public void ResetTimer()
     {
         bossTimer = 15f;  // Reset to 15 seconds for each new challenge
+        
         SpawnPrefixEnemy();
+        
     }
 
     public void RegisterEnemyKill()
     {
         enemiesKilled++;
+        currentEnemy = null; // Enemy is defeated, ready to spawn a new one
+
         if (enemiesKilled >= nextKillThreshold)
         {
             enemiesKilled = 0;
@@ -78,23 +89,30 @@ public class BossManager : MonoBehaviour
             nextKillThreshold = bossLives > 4 ? 3 : 4;
             ApplyDamageToBoss(1);
         }
+
+        ResetTimer(); // Immediately reset timer and spawn a new enemy
     }
     private void SpawnPrefixEnemy()
     {
-        Debug.Log($"Attempting to spawn 15 enemies for Boss Wave {waveNo}.");
-        
+        Debug.Log($"Attempting to spawn 15 enemies in total for Boss Wave {waveNo}.");
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
             Debug.LogError("Enemy prefabs array is empty or not assigned.");
             return;  // Exit the method to avoid further errors
         }
 
-        for (int i = 0; i < 5; i++)  // Spawning 5 enemies as per the boss's ability
+        int randomIndex = Random.Range(0, enemyPrefabs.Length);
+        currentEnemy = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+
+        EnemyAI enemyAI = currentEnemy.GetComponent<EnemyAI>();
+        if (enemyAI != null)
         {
-            int randomIndex = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+            enemyAI.isBossWave = true; // Disable movement for this enemy
         }
     }
+
+    //should be one enemy spawn per 15 secs, player type in full word, damage dealt to boss, if not player lose one live (one heart) after 15 secs.
+    //Enemy should be fixed in place after being summoned. 
 
     public void ApplyDamageToBoss(int damage)
     {
@@ -118,7 +136,6 @@ public class BossManager : MonoBehaviour
             bossSpriteRenderer.sprite = damageSprites[currentDamageSpriteIndex];
         }
     }
-
     
     public void StartBossFight()
     {
