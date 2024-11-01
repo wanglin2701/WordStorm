@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 
 //Starts and loads game
@@ -18,8 +19,13 @@ public class GameController : MonoBehaviour
 
     private static string activeScene;
 
+    public Animator playerAnimator;
+
+
     private void Awake()
     {
+
+
         activeScene = SceneHandler.GetActiveSceneName();
         if (activeScene == "LoadingScreen")
         {
@@ -41,6 +47,8 @@ public class GameController : MonoBehaviour
         else if (activeScene == "game")
         {
             UI_Manager.SetInputField();
+            playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
+
         }
 
     }
@@ -70,6 +78,7 @@ public class GameController : MonoBehaviour
         else if(activeScene == "game")
         {
             UI_Manager.SetGameScene();
+
         }
 
         else if(activeScene == "GameOver")
@@ -107,6 +116,20 @@ public class GameController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 UI_Manager.SetInputField();
+            }
+
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged"))
+            {
+                playerAnimator.SetBool("damaged", false);
+            }
+
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Death") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                playerAnimator.SetBool("isDead", false);
+
+                Debug.Log("Helloo");
+                // Change to the Game Over scene
+                SceneHandler.LoadEndingScreen();
             }
         }
     }

@@ -8,9 +8,12 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public GameObject[] healthPoints;
     public string gameOverSceneName = "GameOver";
+    public Animator playerAnimator;
     
     void Start()
     {
+        playerAnimator = GetComponent<Animator>();
+
         currentHealth = maxHealth;
 
         for (int i = 0; i < healthPoints.Length; i++)
@@ -26,18 +29,32 @@ public class PlayerHealth : MonoBehaviour
             // Decrease health
             currentHealth--;
 
-            // Change the color and disable the corresponding circle sprite
-            if (currentHealth >= 0 && currentHealth < healthPoints.Length)
-            {
-                ChangeHealthColor(healthPoints[currentHealth], Color.red); // Change color to red to indicate damage
-                Destroy(healthPoints[currentHealth], 0.5f); // Destroy the health circle after some time
-            }
 
-            // Check if the player is out of health
             if (currentHealth == 0)
             {
                 Die();
+
             }
+
+            // Change the color and disable the corresponding circle sprite
+            else if (currentHealth >= 0 && currentHealth < healthPoints.Length)
+            {
+              
+                playerAnimator.SetBool("damaged", true);
+
+
+                ChangeHealthColor(healthPoints[currentHealth], Color.red); // Change color to red to indicate damage
+                Destroy(healthPoints[currentHealth], 0.5f); // Destroy the health circle after some time
+
+
+
+            }
+
+            
+
+            
+
+           
         }
     }
 
@@ -56,7 +73,10 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player is dead!");
         // Implement additional game over logic here
 
-        // Change to the Game Over scene
-        SceneHandler.LoadEndingScreen();
+        playerAnimator.SetBool("isDead", true);
+
+        
+
+        
     }
 }

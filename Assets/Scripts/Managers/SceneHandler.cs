@@ -29,6 +29,7 @@ public static class SceneHandler
 
     public static void LoadEndingScreen()
     {
+
         SceneManager.LoadScene("GameOver");
     }
 
