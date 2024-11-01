@@ -23,7 +23,19 @@ public class PlayerInput : MonoBehaviour
         string enemyPrefix = EnemyAI.CheckInput(word);
 
         // If the word is correct, trigger bullet fire
-        if (!string.IsNullOrEmpty(enemyPrefix))
+        if(enemyPrefix == "Word is Already Used Twice!!")
+        {
+            inputField.selectionColor = Color.red;
+            inputField.text = enemyPrefix;
+        }
+
+        else if(enemyPrefix == "Invalid Word")
+        {
+            inputField.selectionColor = Color.red;
+            inputField.text = enemyPrefix;
+        }
+
+        else if (!string.IsNullOrEmpty(enemyPrefix))
         {
             playerAttack.FireBullet(enemyPrefix); // Pass the correct prefix to the FireBullet method
 

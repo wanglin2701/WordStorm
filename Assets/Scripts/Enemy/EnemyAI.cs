@@ -157,7 +157,9 @@ public class EnemyAI : MonoBehaviour
                     {
                         if (usedWords[playerInput] >= 2)  //For testing purpose, each word can only use twice
                         {
-                            return null;  //Return null so player cannot reuse words
+
+
+                            return "Word is Already Used Twice!!";  //Return null so player cannot reuse words
                         }
 
                         else
@@ -177,7 +179,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
-        return null; // Return null if no match is found
+        return "Invalid Word"; // Return null if no match is found
     }
 
     void SetUpPrefix()
