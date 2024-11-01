@@ -68,8 +68,8 @@ public class BossManager : MonoBehaviour
         while (bossHealth > 0 && bossLives > 0)
         {
             bossTimer = 25f;
-            
-            // Countdown loop for the 15-second timer
+
+            // Countdown loop for the 25-second timer
             while (bossTimer > 0 && currentEnemy != null)
             {
                 bossTimer -= Time.deltaTime;
@@ -77,18 +77,21 @@ public class BossManager : MonoBehaviour
                 yield return null;
             }
 
-            // If the enemy is still present after 15 seconds, the player takes damage
+            // If the timer runs out and the enemy is still present, the player loses a life
             if (currentEnemy != null && bossTimer <= 0)
             {
                 Debug.Log("Time's up! Player takes damage.");
                 playerHealth.TakeDamage();
-                Destroy(currentEnemy); 
+
+                // Destroy the current enemy and reset
+                Destroy(currentEnemy);
                 currentEnemy = null;
 
                 yield return new WaitForSeconds(1f);
             }
 
-            if (currentEnemy == null)
+            // Ensure only one enemy is active at any time
+            if (currentEnemy == null && bossLives > 0)
             {
                 SpawnPrefixEnemy();
                 bossTimer = 25f;
@@ -99,7 +102,12 @@ public class BossManager : MonoBehaviour
     public void RegisterEnemyKill()
     {
         enemiesKilled++;
-        currentEnemy = null; // Enemy is defeated, ready to spawn a new one
+        
+        if (currentEnemy != null)
+        {
+            Destroy(currentEnemy);  // Destroy the current enemy to clean up
+            currentEnemy = null;
+        }
 
         if (enemiesKilled >= nextKillThreshold)
         {
@@ -108,8 +116,6 @@ public class BossManager : MonoBehaviour
             nextKillThreshold = bossLives > 4 ? 3 : 4;
             ApplyDamageToBoss(1);
         }
-
-        //ResetTimer(); // Immediately reset timer and spawn a new enemy
     }
     private void SpawnPrefixEnemy()
     {
@@ -132,9 +138,6 @@ public class BossManager : MonoBehaviour
             }
         }
     }
-
-    //should be one enemy spawn per 15 secs, player type in full word, damage dealt to boss, if not player lose one live (one heart) after 15 secs.
-    //Enemy should be fixed in place after being summoned. 
 
     public void ApplyDamageToBoss(int damage)
     {
@@ -166,9 +169,9 @@ public class BossManager : MonoBehaviour
     
     public void StartBossFight()
     {
-        bossTimer = 25f; // Reset the timer to 15 seconds
-        //ResetTimer();
+        bossTimer = 25f; // Reset the timer to 25 seconds
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
+
         // Start the coroutine only if this GameObject is active in hierarchy
         StartCoroutine(BossFightTimer());
     }
