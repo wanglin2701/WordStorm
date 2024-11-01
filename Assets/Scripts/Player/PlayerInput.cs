@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -20,29 +19,20 @@ public class PlayerInput : MonoBehaviour
 
     void SubmitWord(string word)
     {
-        inputField.text = ""; // Clear the input field after submission
-
-
+        
         string enemyPrefix = EnemyAI.CheckInput(word);
 
-        ColorBlock colorBlock = inputField.colors;
-
         // If the word is correct, trigger bullet fire
-
-        Debug.Log(enemyPrefix);
-        if (enemyPrefix == "Word is Already Used Twice!!")
+        if(enemyPrefix == "Word is Already Used Twice!!")
         {
-            inputField.placeholder.GetComponent<TMP_Text>().color = Color.red;
-
-            inputField.placeholder.GetComponent<TMP_Text>().text = "Word is Already Used Twice!!";
+            inputField.selectionColor = Color.red;
+            inputField.text = enemyPrefix;
         }
 
-        else if(enemyPrefix == "Wrong Word or Does not Exist In Dictionary")
+        else if(enemyPrefix == "Invalid Word")
         {
-
-            inputField.placeholder.GetComponent<TMP_Text>().color = Color.red;
-
-            inputField.placeholder.GetComponent<TMP_Text>().text = "Wrong Word or Does not Exist in Dictionary";
+            inputField.selectionColor = Color.red;
+            inputField.text = enemyPrefix;
         }
 
         else if (!string.IsNullOrEmpty(enemyPrefix))
@@ -57,6 +47,7 @@ public class PlayerInput : MonoBehaviour
 
         }
 
+        inputField.text = ""; // Clear the input field after submission
         
         // Automatically refocus the input field after submission
         inputField.Select();

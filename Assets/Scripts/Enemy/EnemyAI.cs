@@ -179,7 +179,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
-        return "Wrong Word or Does not Exist In Dictionary"; // Return null if no match is found
+        return "Invalid Word"; // Return null if no match is found
     }
 
     void SetUpPrefix()
