@@ -39,7 +39,6 @@ public class BossManager : MonoBehaviour
         if (bossHealth <= 0 || bossLives <= 0)
         {
             Debug.Log("Boss defeated!");
-            
             StopCoroutine(BossFightTimer());
             EndBossFight();
         }
@@ -60,21 +59,19 @@ public class BossManager : MonoBehaviour
             }
 
             // If the enemy is still present after 15 seconds, the player takes damage
-            if (currentEnemy != null)
+            if (currentEnemy != null && bossTimer <= 0)
             {
                 Debug.Log("Time's up! Player takes damage.");
                 playerHealth.TakeDamage();
-                ResetTimer();
+                Destroy(currentEnemy); 
+                currentEnemy = null;
+            }
+
+            if(currentEnemy == null)
+            {
+                SpawnPrefixEnemy();
             }
         }
-    }
-
-    public void ResetTimer()
-    {
-        bossTimer = 15f;  // Reset to 15 seconds for each new challenge
-        
-        SpawnPrefixEnemy();
-        
     }
 
     public void RegisterEnemyKill()
@@ -90,7 +87,7 @@ public class BossManager : MonoBehaviour
             ApplyDamageToBoss(1);
         }
 
-        ResetTimer(); // Immediately reset timer and spawn a new enemy
+        //ResetTimer(); // Immediately reset timer and spawn a new enemy
     }
     private void SpawnPrefixEnemy()
     {
@@ -100,14 +97,17 @@ public class BossManager : MonoBehaviour
             Debug.LogError("Enemy prefabs array is empty or not assigned.");
             return;  // Exit the method to avoid further errors
         }
-
-        int randomIndex = Random.Range(0, enemyPrefabs.Length);
-        currentEnemy = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
-
-        EnemyAI enemyAI = currentEnemy.GetComponent<EnemyAI>();
-        if (enemyAI != null)
+        
+        if (currentEnemy == null)
         {
-            enemyAI.isBossWave = true; // Disable movement for this enemy
+            int randomIndex = Random.Range(0, enemyPrefabs.Length);
+            currentEnemy = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+
+            EnemyAI enemyAI = currentEnemy.GetComponent<EnemyAI>();
+            if (enemyAI != null)
+            {
+                enemyAI.isBossWave = true; // Disable movement for this enemy
+            }
         }
     }
 
@@ -140,7 +140,7 @@ public class BossManager : MonoBehaviour
     public void StartBossFight()
     {
         bossTimer = 15f; // Reset the timer to 15 seconds
-        ResetTimer();
+        //ResetTimer();
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
         // Start the coroutine only if this GameObject is active in hierarchy
         StartCoroutine(BossFightTimer());
