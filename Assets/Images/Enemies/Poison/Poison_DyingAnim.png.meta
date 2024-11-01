@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Poison_DyingAnim_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 834
+        width: 167
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9b035432466b848ae46fbcd0647357
+      internalID: 286022162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_DyingAnim_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 827
+        width: 194
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e74910c5b84a794a8c8dcd4e7378ff6
+      internalID: -1653951746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_DyingAnim_2
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 821
+        width: 181
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60f6f020b372494c94ca88dcb0ab5f8
+      internalID: 392734466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_DyingAnim_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 482
+        width: 177
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acbe8213428388e4e8fc801127b54837
+      internalID: -685736366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_DyingAnim_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 474
+        width: 171
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb4a774e362bed40986c4df4d93a3b4
+      internalID: 765356512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_DyingAnim_6
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 483
+        width: 166
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9516ff971e4e74a4db8e3a98a32c614d
+      internalID: 1292070319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +245,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Poison_DyingAnim_0: 286022162
+      Poison_DyingAnim_1: -1653951746
+      Poison_DyingAnim_2: 392734466
+      Poison_DyingAnim_3: 1723367631
+      Poison_DyingAnim_4: -685736366
+      Poison_DyingAnim_5: 765356512
+      Poison_DyingAnim_6: 1292070319
+      Poison_DyingAnim_7: -1497594865
+      Poison_DyingAnim_8: -53732260
+      Poison_DyingAnim_9: -598351381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

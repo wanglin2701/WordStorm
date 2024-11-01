@@ -26,20 +26,39 @@ public class BossManager : MonoBehaviour
     private PlayerHealth playerHealth;
     private GameObject currentEnemy; // Track the current active enemy
 
+    public Animator bossController;
+
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
+
+        bossController = GetComponent<Animator>();
+
         healthBar.maxValue = bossHealth;
         healthBar.value = bossHealth;
         StartCoroutine(BossFightTimer());
+    }
+
+    private void FixedUpdate()
+    {
+        if (bossController.GetCurrentAnimatorStateInfo(0).IsName("TakeDamage") && bossController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+
+            bossController.SetBool("isIdle", true);
+            bossController.SetBool("takeDamage", false);
+        }
     }
 
     void Update()
     {
         if (bossHealth <= 0 || bossLives <= 0)
         {
+
             Debug.Log("Boss defeated!");
             StopCoroutine(BossFightTimer());
+
+           
+
             EndBossFight();
         }
     }
@@ -117,6 +136,11 @@ public class BossManager : MonoBehaviour
     public void ApplyDamageToBoss(int damage)
     {
         bossHealth -= damage;
+
+        bossController.SetBool("isIdle", false);
+        bossController.SetBool("takeDamage", true);
+
+
         if (healthBar != null) healthBar.value = bossHealth;
         Debug.Log($"Boss Health: {bossHealth}");
 

@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 784
+        width: 167
+        height: 240
+      alignment: 9
+      pivot: {x: 0.26333618, y: 0.3652631}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad24a6ac8e33d2d46aea18686aab0678
+      internalID: 1193725346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_1
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 775
+        width: 180
+        height: 249
+      alignment: 9
+      pivot: {x: 0.30038977, y: 0.3845629}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b69d2d5193f3742946bf358e6b3027
+      internalID: -1307955691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_2
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 774
+        width: 184
+        height: 250
+      alignment: 9
+      pivot: {x: 0.27218395, y: 0.39460596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b858de3f596ab546958f39552bf9510
+      internalID: 1733390256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_3
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 769
+        width: 193
+        height: 233
+      alignment: 9
+      pivot: {x: 0.28901285, y: 0.44859844}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8598b76536a7754c989d03aef7bbb84
+      internalID: -970744447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 419
+        width: 184
+        height: 222
+      alignment: 9
+      pivot: {x: 0.2591659, y: 0.47842076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1afea0607ddb354591a92ab97fa85ce
+      internalID: -1737899495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_5
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 419
+        width: 189
+        height: 204
+      alignment: 9
+      pivot: {x: 0.29088435, y: 0.5234836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36af2d300c500474aaec457a7e24f09d
+      internalID: -1876363622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_6
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 414
+        width: 164
+        height: 206
+      alignment: 9
+      pivot: {x: 0.31012708, y: 0.5406974}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac13e28848e3ef4aa1a3d9e2d45e408
+      internalID: 21474191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison_1stDamageAnim_7
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 423
+        width: 179
+        height: 198
+      alignment: 9
+      pivot: {x: 0.34611094, y: 0.5120976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ea16a4d8a48de41bf4aaf74b355160
+      internalID: -826816116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +287,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Poison_1stDamageAnim_0: 1193725346
+      Poison_1stDamageAnim_1: -1307955691
+      Poison_1stDamageAnim_2: 1733390256
+      Poison_1stDamageAnim_3: -970744447
+      Poison_1stDamageAnim_4: -1737899495
+      Poison_1stDamageAnim_5: -1876363622
+      Poison_1stDamageAnim_6: 21474191
+      Poison_1stDamageAnim_7: -826816116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

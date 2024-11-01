@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 869
+        width: 107
+        height: 85
+      alignment: 9
+      pivot: {x: 0.53673786, y: 0.46146098}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d042a1e060b1c346aca15c4a048e5eb
+      internalID: 140635038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_1
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 875
+        width: 100
+        height: 73
+      alignment: 9
+      pivot: {x: 0.5458615, y: 0.46410045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e7076a0170c2c478f78e578efa17ce
+      internalID: -1225816638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_2
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 879
+        width: 88
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 133c49dae6accde4caceb3a1b8a1cd7e
+      internalID: 667886228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_3
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 801
+        width: 236
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 1, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354e308802a100c428f96ce9663850cf
+      internalID: -531744141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 578
+        width: 253
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd93718178fc4ea47a8fb553a849aa79
+      internalID: 1762508935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_5
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 590
+        width: 230
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1f4162d38863c4ea5f6d8e1e19abb7
+      internalID: -1438905875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke_DamageAnim_6
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 605
+        width: 196
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0130aace920b81948861b241ac0b8f4d
+      internalID: 1621226371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +266,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Smoke_DamageAnim_0: 140635038
+      Smoke_DamageAnim_1: -1225816638
+      Smoke_DamageAnim_2: 667886228
+      Smoke_DamageAnim_3: -531744141
+      Smoke_DamageAnim_4: 1762508935
+      Smoke_DamageAnim_5: -1438905875
+      Smoke_DamageAnim_6: 1621226371
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8084446809239397863}
   - component: {fileID: -4921045585269105665}
   - component: {fileID: 8734594880977083802}
+  - component: {fileID: 4728080633630230943}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -172,9 +173,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 103
+  waveNo: 0
   bossHealth: 35
   bossLives: 7
   bossTimerText: {fileID: 0}
   healthBar: {fileID: 0}
+  damageSprites: []
   bossSpriteRenderer: {fileID: 0}
-  bossSprites: []
+  enemyPrefabs: []
+  spawnPoint: {fileID: 0}
+--- !u!95 &4728080633630230943
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244434206618227149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c34beb4b043e4a0479269833e06fd756, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

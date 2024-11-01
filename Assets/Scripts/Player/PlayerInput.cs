@@ -25,14 +25,16 @@ public class PlayerInput : MonoBehaviour
         // If the word is correct, trigger bullet fire
         if(enemyPrefix == "Word is Already Used Twice!!")
         {
-            inputField.selectionColor = Color.red;
-            inputField.text = enemyPrefix;
+            inputField.placeholder.GetComponent<TMP_Text>().color = Color.red;
+
+            inputField.placeholder.GetComponent<TMP_Text>().text = "Word is Already Used Twice!!";
         }
 
         else if(enemyPrefix == "Invalid Word")
         {
-            inputField.selectionColor = Color.red;
-            inputField.text = enemyPrefix;
+            inputField.placeholder.GetComponent<TMP_Text>().color = Color.red;
+
+            inputField.placeholder.GetComponent<TMP_Text>().text = "Wrong Word or Does not Exist in Dictionary";
         }
 
         else if (!string.IsNullOrEmpty(enemyPrefix))

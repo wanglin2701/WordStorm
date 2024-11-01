@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 167317788479356201}
   - component: {fileID: 2552775136662247011}
   - component: {fileID: 4397125184989399987}
+  - component: {fileID: 4984679645726034563}
   m_Layer: 0
   m_Name: Armored_Enemy 1
   m_TagString: Enemy
@@ -284,6 +285,8 @@ MonoBehaviour:
   separationForce: 2.1
   health: 2
   enemyPrefix: 
+  isBossWave: 0
+  enemyController: {fileID: 0}
 --- !u!61 &167317788479356201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -379,3 +382,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &4984679645726034563
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327652470098354438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 607e901f8d6a45d4c84fffa224508c4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

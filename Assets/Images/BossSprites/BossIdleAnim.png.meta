@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BossIdleAnim_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1766
+        width: 385
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58503e9d0307911479dba4cd377d258e
+      internalID: 1661291985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_1
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 1771
+        width: 387
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378798cdec4ad214893943237abe453e
+      internalID: 1367592222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_2
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1775
+        width: 389
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b7415541da23343a4c15f8fccb1357
+      internalID: 1656300389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_3
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 1771
+        width: 397
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d01311a396c9d4da3262acd190034d
+      internalID: -1728874667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1458
+        width: 392
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd190809f849cee4e9f9f8affd5ca59e
+      internalID: -1138901286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_5
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1457
+        width: 389
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85f497f8d079b44bb9938afe79a059c
+      internalID: -396708944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_6
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1453
+        width: 387
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af96d8ffdba25ca4ba13a5d3105434fe
+      internalID: -815877431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_7
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 1447
+        width: 385
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17b9a36c4aa93343b31d37e61b53683
+      internalID: -906919838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_8
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1128
+        width: 385
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f521fe714a8282b40809734387bab3b7
+      internalID: 1706966263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1128
+        width: 385
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8504dcf406affa74dba9d9855c1930d6
+      internalID: 1527017092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_10
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1128
+        width: 385
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d87bc6bba51abc646aca3b352e0a237f
+      internalID: -853864481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIdleAnim_11
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 1128
+        width: 385
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b303938d3ed88f3438ad9ca88bda169f
+      internalID: 1018962075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +371,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BossIdleAnim_0: 1661291985
+      BossIdleAnim_1: 1367592222
+      BossIdleAnim_10: -853864481
+      BossIdleAnim_11: 1018962075
+      BossIdleAnim_2: 1656300389
+      BossIdleAnim_3: -1728874667
+      BossIdleAnim_4: -1138901286
+      BossIdleAnim_5: -396708944
+      BossIdleAnim_6: -815877431
+      BossIdleAnim_7: -906919838
+      BossIdleAnim_8: 1706966263
+      BossIdleAnim_9: 1527017092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

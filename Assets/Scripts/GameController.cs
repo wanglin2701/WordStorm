@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     private static string activeScene;
 
     public Animator playerAnimator;
+    public Animator bossController;
 
 
     private void Awake()
@@ -78,6 +79,8 @@ public class GameController : MonoBehaviour
         else if(activeScene == "game")
         {
             UI_Manager.SetGameScene();
+            bossController = GameObject.Find("Boss").GetComponent<Animator>();
+
 
         }
 
@@ -87,6 +90,34 @@ public class GameController : MonoBehaviour
 
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (SceneHandler.GetActiveSceneName() == "game")
+        {
+            Debug.Log(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged"));
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                playerAnimator.SetBool("damaged", false);
+
+            }
+
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Death") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+
+                Debug.Log("Helloo");
+                // Change to the Game Over scene
+                SceneHandler.LoadEndingScreen();
+            }
+
+            if (bossController.GetCurrentAnimatorStateInfo(0).IsName("Dying") && bossController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+
+                // Change to the Game Over scene
+                SceneHandler.LoadEndingScreen();
+            }
+        }
     }
 
     private void Update()
@@ -118,19 +149,7 @@ public class GameController : MonoBehaviour
                 UI_Manager.SetInputField();
             }
 
-            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged"))
-            {
-                playerAnimator.SetBool("damaged", false);
-            }
 
-            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Death") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                playerAnimator.SetBool("isDead", false);
-
-                Debug.Log("Helloo");
-                // Change to the Game Over scene
-                SceneHandler.LoadEndingScreen();
-            }
         }
     }
 

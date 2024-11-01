@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PoisonIdleAnim_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 872
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc2c6f3a0cf23b4f9fc534cf15ce160
+      internalID: 1097418626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 871
+        width: 123
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9def2a08baa44554f8e90d6642664a8e
+      internalID: -2482271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_2
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 870
+        width: 123
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83f578997887a974f893af4aca0b66b0
+      internalID: -820413824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_3
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 870
+        width: 122
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4504a1868bb8234fac61ec6dd737350
+      internalID: -1533640049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_4
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 871
+        width: 122
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e3e23aa4d3b8d94ebde15dde2a22cac
+      internalID: 397957628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_5
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 871
+        width: 122
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599a3a4d817d40a44a274a2b0af6e30c
+      internalID: -1513579459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 679
+        width: 122
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ca541871e667147a4cee9f966d3755
+      internalID: 1762882584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_7
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 680
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adeab8986c338fc45b77e41c8fbd1b2e
+      internalID: -459905851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_8
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 680
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3652df0e9f8eba64b929918938859014
+      internalID: 1796367322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_9
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 680
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d3d2da46a8d754c8271e8fb962d91a
+      internalID: -49652427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_10
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 680
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71a0bec690865f41a77712896f2b5c4
+      internalID: -1374469933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoisonIdleAnim_11
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 680
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f6abeff99a641a4bbf8ca7940ac8170
+      internalID: -1254663725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +371,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PoisonIdleAnim_0: 1097418626
+      PoisonIdleAnim_1: -2482271
+      PoisonIdleAnim_10: -1374469933
+      PoisonIdleAnim_11: -1254663725
+      PoisonIdleAnim_2: -820413824
+      PoisonIdleAnim_3: -1533640049
+      PoisonIdleAnim_4: 397957628
+      PoisonIdleAnim_5: -1513579459
+      PoisonIdleAnim_6: 1762882584
+      PoisonIdleAnim_7: -459905851
+      PoisonIdleAnim_8: 1796367322
+      PoisonIdleAnim_9: -49652427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

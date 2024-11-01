@@ -27,9 +27,14 @@ public class EnemyAI : MonoBehaviour
     public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
     public bool isBossWave;
 
+    public Animator enemyController;
+
     private void Start()
     {
         SetUpPrefix();
+
+        enemyController = GetComponent<Animator>();
+        
 
         //Get Dictionary data
         WSDictionary = GameData.GetWordStormDictionary();
@@ -49,6 +54,28 @@ public class EnemyAI : MonoBehaviour
         if (isBossWave)
         {
             speed = 0;  // Prevent movement
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        
+
+
+        if (enemyController.GetCurrentAnimatorStateInfo(0).IsName("Dying") && enemyController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+
+            DestroyEnemy();
+            enemyController.SetBool("isDead", false);
+
+        }
+
+        else if (enemyController.GetCurrentAnimatorStateInfo(0).IsName("Normal_Damage") && enemyController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            enemyController.SetBool("isDamaged", false);
+
+            enemyController.SetBool("isDamagedIdle", true);
+
         }
     }
 
@@ -88,6 +115,8 @@ public class EnemyAI : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)finalDirection, speed * Time.deltaTime);
         }
 
+     
+
         //if (isBossWave || speed <= 0) return; // Prevent movement if in boss wave
     }
 
@@ -124,7 +153,26 @@ public class EnemyAI : MonoBehaviour
         // If health is 0 or less, destroy the enemy
         if (health <= 0)
         {
-            DestroyEnemy();
+            if(ID == 101) //Smoke Enemy Death
+            {
+                enemyController.SetBool("isDead", true);
+                enemyController.SetBool("isIdle", false);
+
+            }
+
+            else if(ID == 102)
+            {
+                enemyController.SetBool("isDead", true);
+
+            }
+
+            //Destroy Enemy when animation done
+        }
+
+        if(ID == 102)
+        {
+            enemyController.SetBool("isDamaged", true);
+
         }
     }
 
