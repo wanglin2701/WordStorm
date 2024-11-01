@@ -10,7 +10,7 @@ public class BossManager : MonoBehaviour
     public int waveNo;
     public int bossHealth = 35;
     public int bossLives = 7;
-    private float bossTimer = 15f;  // Timer for each prefix challenge
+    private float bossTimer = 25f;  // Timer for each prefix challenge
     public TextMeshProUGUI bossTimerText;
     public Slider healthBar; // Reference to the Slider component
 
@@ -67,7 +67,7 @@ public class BossManager : MonoBehaviour
     {
         while (bossHealth > 0 && bossLives > 0)
         {
-            bossTimer = 15f;
+            bossTimer = 25f;
             
             // Countdown loop for the 15-second timer
             while (bossTimer > 0 && currentEnemy != null)
@@ -84,11 +84,14 @@ public class BossManager : MonoBehaviour
                 playerHealth.TakeDamage();
                 Destroy(currentEnemy); 
                 currentEnemy = null;
+
+                yield return new WaitForSeconds(1f);
             }
 
-            if(currentEnemy == null)
+            if (currentEnemy == null)
             {
                 SpawnPrefixEnemy();
+                bossTimer = 25f;
             }
         }
     }
@@ -163,7 +166,7 @@ public class BossManager : MonoBehaviour
     
     public void StartBossFight()
     {
-        bossTimer = 15f; // Reset the timer to 15 seconds
+        bossTimer = 25f; // Reset the timer to 15 seconds
         //ResetTimer();
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
         // Start the coroutine only if this GameObject is active in hierarchy
