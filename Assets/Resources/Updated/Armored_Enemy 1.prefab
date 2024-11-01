@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 102
   player: {fileID: 0}
-  speed: 0.1
+  speed: 0.4
   stoppingDistance: 1
   enemyAvoidanceDistance: 0.8
   separationForce: 2.1

@@ -76,9 +76,8 @@ public class PlayerAttack : MonoBehaviour
                     closestEnemy = enemy;
                 }
             }
-            
         }
-
+        
         return closestEnemy;
     }
 }

@@ -81,13 +81,18 @@ public class BossManager : MonoBehaviour
     }
     private void SpawnPrefixEnemy()
     {
-        if (waveNo == 4)
+        Debug.Log($"Attempting to spawn 15 enemies for Boss Wave {waveNo}.");
+        
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
-            for (int i = 0; i < 15; i++)  // Spawning 15 enemies as per the boss's ability
-            {
-                int randomIndex = Random.Range(0, enemyPrefabs.Length);
-                Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
-            }
+            Debug.LogError("Enemy prefabs array is empty or not assigned.");
+            return;  // Exit the method to avoid further errors
+        }
+
+        for (int i = 0; i < 5; i++)  // Spawning 5 enemies as per the boss's ability
+        {
+            int randomIndex = Random.Range(0, enemyPrefabs.Length);
+            Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
         }
     }
 

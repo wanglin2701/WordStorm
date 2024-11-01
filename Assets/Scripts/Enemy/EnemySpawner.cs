@@ -18,6 +18,9 @@ public class EnemySpawner : MonoBehaviour
     public TextMeshProUGUI LevelInfo;
     public GameObject bossGameObject; // Reference to the boss GameObject
     
+
+    //start wave 3 during presentation to get straight to boss
+
     void Start()
     {
         LevelInfo.text = "Level 1 | Wave " + waveNumber;
