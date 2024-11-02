@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     
     [SerializeField]
     private Transform FireGun;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 20f;
 
     public void FireBullet(string enemyPrefix) // Pass the prefix of the target enemy
     {
@@ -21,17 +21,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (enemy != null)
         {
-            //EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-            
-            // // Check if the enemy is boss-spawned
-            // if (enemyAI != null && enemyAI.isBossSpawnedEnemy)
-            // {
-            //     // Destroy the enemy immediately if it matches the prefix
-            //     Destroy(enemy);
-            //     return; // Exit as we already found and destroyed the target
-            // }
-
-
             // Calculate direction towards the enemy
             direction = (enemy.transform.position - transform.position).normalized;
         }

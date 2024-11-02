@@ -39,6 +39,10 @@ public class PlayerInput : MonoBehaviour
 
         else if (!string.IsNullOrEmpty(enemyPrefix))
         {
+            // Clear any red text if the input is correct
+            inputField.placeholder.GetComponent<TMP_Text>().text = "";  // Clear placeholder text
+            inputField.placeholder.GetComponent<TMP_Text>().color = Color.white;  // Reset text color
+
             playerAttack.FireBullet(enemyPrefix); // Pass the correct prefix to the FireBullet method
 
             ComboManager.ResetComboTimer();
