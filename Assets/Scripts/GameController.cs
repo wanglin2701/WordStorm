@@ -113,7 +113,6 @@ public class GameController : MonoBehaviour
 
             if (bossController.GetCurrentAnimatorStateInfo(0).IsName("Dying") && bossController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
-
                 // Change to the Game Over scene
                 SceneHandler.LoadEndingScreen();
             }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class PlayerHealth : MonoBehaviour
     public GameObject[] healthPoints;
     public string gameOverSceneName = "GameOver";
     public Animator playerAnimator;
+
+    public Transform uiCanvas;
+    public Image redTint;
+    
+    //public CameraShake cameraShake;
     
     void Start()
     {
@@ -28,8 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             // Decrease health
             currentHealth--;
-
-
+     
             if (currentHealth == 0)
             {
                 Die();
@@ -46,10 +51,12 @@ public class PlayerHealth : MonoBehaviour
                 ChangeHealthColor(healthPoints[currentHealth], Color.red); // Change color to red to indicate damage
                 Destroy(healthPoints[currentHealth], 0.5f); // Destroy the health circle after some time
 
-
+                if (currentHealth == 1) // When on last life
+                {
+                    redTint.color = new Color(1, 0, 0, 0.03f); // Red tint with some transparency
+                }
 
             }
-
            
         }
     }
@@ -71,8 +78,6 @@ public class PlayerHealth : MonoBehaviour
 
         playerAnimator.SetBool("isDead", true);
 
-        
-
-        
     }
+
 }
