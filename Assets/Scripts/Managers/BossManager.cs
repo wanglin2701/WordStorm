@@ -84,6 +84,8 @@ public class BossManager : MonoBehaviour
             // If the timer runs out and the enemy is still present, the player loses a life
             if (currentEnemy != null && bossTimer <= 0)
             {
+                SoundManager.instance.PlaySound("BossShoot");
+
                 Debug.Log("Time's up! Player takes damage.");
                 playerHealth.TakeDamage();
 
@@ -150,6 +152,9 @@ public class BossManager : MonoBehaviour
     {
         if (bossHealth > 0)
         {
+            SoundManager.instance.PlaySound("BossDamage");
+
+
             bossHealth = Mathf.Max(bossHealth - damage, 0);  // Ensure bossHealth does not go negative
 
             bossController.SetBool("isIdle", false);
@@ -195,6 +200,9 @@ public class BossManager : MonoBehaviour
 
     private void EndBossFight()
     {
+        SoundManager.instance.PlaySound("BossDie");
+
+
         StopCoroutine(BossFightTimer());  // Stop the boss fight timer
         bossTimerText.gameObject.SetActive(false);  // Hide the boss timer UI
         if (healthBar != null)

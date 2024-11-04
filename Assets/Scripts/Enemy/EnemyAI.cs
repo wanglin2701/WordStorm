@@ -155,6 +155,8 @@ public class EnemyAI : MonoBehaviour
         {
             if(ID == 101) //Smoke Enemy Death
             {
+                SoundManager.instance.PlaySound("SmokeDie");
+
                 enemyController.SetBool("isDead", true);
                 enemyController.SetBool("isIdle", false);
 
@@ -162,6 +164,8 @@ public class EnemyAI : MonoBehaviour
 
             else if(ID == 102)
             {
+                SoundManager.instance.PlaySound("PoisonDie");
+
                 enemyController.SetBool("isDead", true);
 
             }
@@ -171,6 +175,8 @@ public class EnemyAI : MonoBehaviour
 
         if(ID == 102)
         {
+            SoundManager.instance.PlaySound("PoisonDie");
+
             enemyController.SetBool("isDamaged", true);
 
         }

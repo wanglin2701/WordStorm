@@ -39,7 +39,10 @@ public class PlayerHealth : MonoBehaviour
         {
             // Decrease health
             currentHealth--;
-     
+
+            SoundManager.instance.PlaySound("PlayerDamage");
+
+
             if (currentHealth == 0)
             {
                 Die();
