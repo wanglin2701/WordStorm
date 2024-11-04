@@ -27,10 +27,22 @@ public static class UI_Manager
     
     private static TMP_InputField inputField;
 
-    //Gameover UI
+    //Gameover UI & Completed
     private static Button[] gameeoverBTN_array;
     private static Button homeBTN;
     private static Button retryBTN;
+
+
+    //HowtoPlay
+    private static Button[] howtoplayBTN_array;
+    private static Button howtoplay_BackBTN;
+    private static Button howtoplay_LArrow;
+
+    //HowtoPlay2
+    private static Button[] howtoplay2BTN_array;
+    private static Button howtoplay2_BackBTN;
+    private static Button howtoplay2_RArrow;
+
 
 
     public static void SetTeamLogoScene()
@@ -52,7 +64,7 @@ public static class UI_Manager
         playBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
 
         HowtoPlayBTN = startScreenBTN_array[1];
-        //HowtoPlayBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
+        HowtoPlayBTN.onClick.AddListener(SceneHandler.LoadHowtoPlay);
 
         creditsBTN = startScreenBTN_array[2];
         //HowtoPlayBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
@@ -112,6 +124,34 @@ public static class UI_Manager
         retryBTN.onClick.AddListener(SceneHandler.LoadGame);
 
     }
+
+    public static void SetHowtoPlayScreen()
+    {
+        //Get the UI Elements
+        howtoplayBTN_array = GameObject.Find("Buttons").GetComponentsInChildren<Button>();
+
+        howtoplay_BackBTN = howtoplayBTN_array[0];
+        howtoplay_BackBTN.onClick.AddListener(SceneHandler.LoadStartScreen);
+
+        howtoplay_LArrow = howtoplayBTN_array[1];
+        howtoplay_LArrow.onClick.AddListener(SceneHandler.LoadHowtoPlay2);
+
+    }
+
+    public static void SetHowtoPlay2Screen()
+    {
+        //Get the UI Elements
+        howtoplay2BTN_array = GameObject.Find("Buttons").GetComponentsInChildren<Button>();
+
+        howtoplay2_BackBTN = howtoplay2BTN_array[0];
+        howtoplay2_BackBTN.onClick.AddListener(SceneHandler.LoadStartScreen);
+
+        howtoplay2_RArrow = howtoplay2BTN_array[1];
+        howtoplay2_RArrow.onClick.AddListener(SceneHandler.LoadHowtoPlay);
+
+    }
+
+
 
 
 

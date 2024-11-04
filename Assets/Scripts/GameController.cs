@@ -60,35 +60,9 @@ public class GameController : MonoBehaviour
         //Call the method to read the data
 
         //DebugDataReadInBuild();
+        LoadScreens();
 
-        if (activeScene == "LoadingScreen")
-        {
-            LoadingScreen.IncrementProgress(progress_bar, 1.00f);
-        }
-
-        else if(activeScene == "TeamLogo")
-        {
-            UI_Manager.SetTeamLogoScene();
-        } 
-
-        else if(activeScene == "StartScreen")
-        {
-            UI_Manager.SetStartScreenScene();
-        }
-
-        else if(activeScene == "game")
-        {
-            UI_Manager.SetGameScene();
-            //bossController = GameObject.Find("Boss").GetComponent<Animator>();
-
-
-        }
-
-        else if(activeScene == "GameOver")
-        {
-            UI_Manager.SetGameoverScreen();
-
-        }
+      
 
     }
 
@@ -186,6 +160,50 @@ public class GameController : MonoBehaviour
 
      
 
+    }
+
+    static void LoadScreens()
+    {
+        if (activeScene == "LoadingScreen")
+        {
+            LoadingScreen.IncrementProgress(progress_bar, 1.00f);
+        }
+
+        else if (activeScene == "TeamLogo")
+        {
+            UI_Manager.SetTeamLogoScene();
+        }
+
+        else if (activeScene == "StartScreen")
+        {
+            UI_Manager.SetStartScreenScene();
+        }
+
+        else if (activeScene == "game")
+        {
+            UI_Manager.SetGameScene();
+            //bossController = GameObject.Find("Boss").GetComponent<Animator>();
+
+
+        }
+
+        else if (activeScene == "GameOver" || activeScene == "Level1_Cleared")
+        {
+            UI_Manager.SetGameoverScreen();
+
+        }
+
+        else if (activeScene == "HowtoPlay")
+        {
+            UI_Manager.SetHowtoPlayScreen();
+
+        }
+
+        else if (activeScene == "HowtoPlay2")
+        {
+            UI_Manager.SetHowtoPlay2Screen();
+
+        }
     }
 
 

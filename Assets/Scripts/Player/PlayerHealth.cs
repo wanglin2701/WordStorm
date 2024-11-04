@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public Animator playerAnimator;
 
     public Transform uiCanvas;
-    public Image redTint;
+    public GameObject redTint;
     
     //public CameraShake cameraShake;
     
@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
                 if (currentHealth == 1) // When on last life
                 {
                     //add the background red tint
-                    redTint.gameObject.SetActive(true);
+                    redTint.SetActive(true);
                     
                 }
 

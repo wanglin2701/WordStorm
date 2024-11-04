@@ -39,4 +39,15 @@ public static class SceneHandler
         SceneManager.LoadScene("Level1_Cleared");
     }
 
+    public static void LoadHowtoPlay()
+    {
+        SceneManager.LoadScene("HowtoPlay");
+    }
+
+    public static void LoadHowtoPlay2()
+    {
+        SceneManager.LoadScene("HowtoPlay2");
+
+    }
+
 }
