@@ -16,6 +16,7 @@ public static class UI_Manager
     //Start Screen UI Elements
     private static Button[] startScreenBTN_array;
     private static Button playBTN;
+    private static Button HowtoPlayBTN;
     private static Button creditsBTN;
     private static Button quitBTN;
 
@@ -27,7 +28,10 @@ public static class UI_Manager
     private static TMP_InputField inputField;
 
     //Gameover UI
+    private static Button[] gameeoverBTN_array;
     private static Button homeBTN;
+    private static Button retryBTN;
+
 
     public static void SetTeamLogoScene()
     {
@@ -45,16 +49,18 @@ public static class UI_Manager
         startScreenBTN_array = GameObject.Find("Buttons").GetComponentsInChildren<Button>();
 
         playBTN = startScreenBTN_array[0];
-        playBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Play";
         playBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
 
-        creditsBTN = startScreenBTN_array[1];
-        creditsBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Credits";
+        HowtoPlayBTN = startScreenBTN_array[1];
+        //HowtoPlayBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
+
+        creditsBTN = startScreenBTN_array[2];
+        //HowtoPlayBTN.onClick.AddListener(SceneHandler.LoadLoadingScreen);
+
 
         //creditsBTN.onClick.AddListener();  //TO BE ADDED IN FUTURE
 
-        quitBTN = startScreenBTN_array[2];
-        quitBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Quit";
+        quitBTN = startScreenBTN_array[3];
         quitBTN.onClick.AddListener(Application.Quit);  //TO BE ADDED IN FUTURE
     }
 
@@ -96,9 +102,15 @@ public static class UI_Manager
 
     public static void SetGameoverScreen()
     {
-        homeBTN = GameObject.Find("HomeBTN").GetComponent<Button>();
-        homeBTN.GetComponentInChildren<TextMeshProUGUI>().text = "Back to Home";
+        //Get the UI Elements
+        gameeoverBTN_array = GameObject.Find("Buttons").GetComponentsInChildren<Button>();
+
+        homeBTN = gameeoverBTN_array[0];
         homeBTN.onClick.AddListener(SceneHandler.LoadStartScreen);
+
+        retryBTN = gameeoverBTN_array[1];
+        retryBTN.onClick.AddListener(SceneHandler.LoadGame);
+
     }
 
 

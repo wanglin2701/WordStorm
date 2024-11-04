@@ -76,7 +76,7 @@ public class BossManager : MonoBehaviour
             while (bossTimer > 0 && currentEnemy != null)
             {
                 bossTimer -= Time.deltaTime;
-                bossTimerText.text = $"Boss Timer: {bossTimer:F2}s";
+                bossTimerText.text = $"Attack Countdown: {bossTimer:F2}s";
                 yield return null;
             }
 
@@ -195,6 +195,7 @@ public class BossManager : MonoBehaviour
         }
 
         StartCoroutine(WaitForDeathAnimation());
+        SceneHandler.LoadClearedLevel1();
 
         Debug.Log("Boss defeated!");
     }

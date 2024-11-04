@@ -33,4 +33,10 @@ public static class SceneHandler
         SceneManager.LoadScene("GameOver");
     }
 
+    public static void LoadClearedLevel1()
+    {
+
+        SceneManager.LoadScene("Level1_Cleared");
+    }
+
 }
