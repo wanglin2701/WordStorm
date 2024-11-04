@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
         else if(activeScene == "game")
         {
             UI_Manager.SetGameScene();
-            bossController = GameObject.Find("Boss").GetComponent<Animator>();
+            //bossController = GameObject.Find("Boss").GetComponent<Animator>();
 
 
         }
@@ -111,11 +111,11 @@ public class GameController : MonoBehaviour
                 SceneHandler.LoadEndingScreen();
             }
 
-            if (bossController.GetCurrentAnimatorStateInfo(0).IsName("Dying") && bossController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                // Change to the Game Over scene
-                // SceneHandler.LoadEndingScreen();
-            }
+            // if (bossController.GetCurrentAnimatorStateInfo(0).IsName("Dying") && bossController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            // {
+            //     // Change to the Game Over scene
+            //     // SceneHandler.LoadEndingScreen();
+            // }
         }
     }
 

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+using Unity.VisualScripting;
 
 public class BossManager : MonoBehaviour
 {
@@ -58,12 +59,12 @@ public class BossManager : MonoBehaviour
 
     void Update()
     {
-        if (bossHealth <= 0 || bossLives <= 0)
-        {
+        // if (bossHealth <= 0 || bossLives <= 0)
+        // {
 
-            Debug.Log("Boss defeated!");
-            EndBossFight();
-        }
+        //     Debug.Log("Boss defeated!");
+        //     EndBossFight();
+        // }
     }
 
     private IEnumerator BossFightTimer()
@@ -165,6 +166,13 @@ public class BossManager : MonoBehaviour
                 bossController.SetBool("isDead", true);
                 EndBossFight();
             }
+
+            // if (bossHealth <= 0 || bossLives <= 0)
+            // {
+
+            //     Debug.Log("Boss defeated!");
+            //     //EndBossFight();
+            // }
         }
     }
 
@@ -212,7 +220,7 @@ public class BossManager : MonoBehaviour
         }
         
         // Wait for a few seconds before transitioning to the start screen
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         SceneHandler.LoadClearedLevel1();
 
 

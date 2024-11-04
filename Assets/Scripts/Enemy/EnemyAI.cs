@@ -94,7 +94,7 @@ public class EnemyAI : MonoBehaviour
         // Rotate the enemy to face the player
         //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
-        if (isBossWave) return;
+        //if (isBossWave) return;
         
         // Calculate direction towards the player
         Vector2 direction = (player.transform.position - transform.position).normalized;

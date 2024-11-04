@@ -25,6 +25,11 @@ public class PlayerHealth : MonoBehaviour
         for (int i = 0; i < healthPoints.Length; i++)
         {
             healthPoints[i].SetActive(true);
+        }
+
+        if (redTint != null)
+        {
+            redTint.gameObject.SetActive(false);
         }   
     }
 
@@ -53,7 +58,9 @@ public class PlayerHealth : MonoBehaviour
 
                 if (currentHealth == 1) // When on last life
                 {
-                    redTint.color = new Color(1, 0, 0, 0.03f); // Red tint with some transparency
+                    //add the background red tint
+                    redTint.gameObject.SetActive(true);
+                    
                 }
 
             }
@@ -77,6 +84,11 @@ public class PlayerHealth : MonoBehaviour
         // Implement additional game over logic here
 
         playerAnimator.SetBool("isDead", true);
+
+        if (redTint != null)
+        {
+            redTint.gameObject.SetActive(true);
+        }
 
     }
 
