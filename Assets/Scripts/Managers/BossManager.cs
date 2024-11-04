@@ -162,7 +162,7 @@ public class BossManager : MonoBehaviour
 
             if (bossHealth <= 0)
             { 
-                bossController.SetBool("Dying", true);
+                bossController.SetBool("isDead", true);
                 EndBossFight();
             }
         }
@@ -194,8 +194,10 @@ public class BossManager : MonoBehaviour
             healthBar.gameObject.SetActive(false);  // Hide the health bar
         }
 
+
         StartCoroutine(WaitForDeathAnimation());
-        SceneHandler.LoadClearedLevel1();
+
+
 
         Debug.Log("Boss defeated!");
     }
@@ -211,8 +213,9 @@ public class BossManager : MonoBehaviour
         
         // Wait for a few seconds before transitioning to the start screen
         yield return new WaitForSeconds(5.0f);
+        SceneHandler.LoadClearedLevel1();
 
-        SceneHandler.LoadStartScreen(); 
+
     }
 
     private void UpdateBossUI(bool show)
