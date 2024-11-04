@@ -209,7 +209,7 @@ public class BossManager : MonoBehaviour
         }
         
         // Wait for a few seconds before transitioning to the start screen
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
 
         SceneHandler.LoadStartScreen(); 
     }
