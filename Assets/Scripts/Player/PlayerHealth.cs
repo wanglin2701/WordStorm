@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +14,9 @@ public class PlayerHealth : MonoBehaviour
 
     public Transform uiCanvas;
     public GameObject redTint;
-    
-    //public CameraShake cameraShake;
-    
+
+    public CameraShake cameraShake;
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -37,6 +38,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth > 0)
         {
+            cameraShake.TriggerShake(1f);
+
             // Decrease health
             currentHealth--;
 

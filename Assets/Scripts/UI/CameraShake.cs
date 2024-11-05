@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     public float shakeDuration = 0f;
-    public float shakeMagnitude = 0.01f;
-    public float dampingSpeed = 0.01f;
+    public float shakeMagnitude = 0.8f;
+    public float dampingSpeed = 0.5f;
     Vector3 initialPosition;
 
     void Awake()
@@ -19,20 +19,20 @@ public class CameraShake : MonoBehaviour
 
     void OnEnable()
     {
-        initialPosition = transform.localPosition;
+        initialPosition = transform.position;
     }
 
     void Update()
     {
         if (shakeDuration > 0)
         {
-            transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
+            transform.position = initialPosition + Random.insideUnitSphere * shakeMagnitude;
             shakeDuration -= Time.deltaTime * dampingSpeed;
         }
         else
         {
             shakeDuration = 0f;
-            transform.localPosition = initialPosition;
+            transform.position = initialPosition;
         }
     }
 
