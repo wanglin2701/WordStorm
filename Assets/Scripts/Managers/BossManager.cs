@@ -120,17 +120,28 @@ public class BossManager : MonoBehaviour
                     bossLives--;
 
                     healthBar.value = bossLives;
-                    SoundManager.instance.PlaySound("BossDamage");
 
-                    bossController.SetBool("isIdle", false);
-                    bossController.SetBool("takeDamage", true);
+                    
+                    
 
                     UpdateBossSprite();
 
+
+
                     if (bossLives <= 0)
-                    { 
+                    {
+
+                        SoundManager.instance.PlaySound("BossDie");
                         bossController.SetBool("isDead", true);
                         EndBossFight();
+                    }
+
+                    else
+                    {
+                        SoundManager.instance.PlaySound("BossDamage");
+
+                        bossController.SetBool("isIdle", false);
+                        bossController.SetBool("takeDamage", true);
                     }
                 }
             }
@@ -164,14 +175,12 @@ public class BossManager : MonoBehaviour
     {
         if (bossLives > 0)
         {
-            SoundManager.instance.PlaySound("BossDamage");
+            
 
 
             bossLives = Mathf.Max(bossLives - damage, 0);  // Ensure bossHealth does not go negative
 
-            bossController.SetBool("isIdle", false);
-            bossController.SetBool("takeDamage", true);
-
+      
 
             //if (healthBar != null) healthBar.value = bossLives;
             Debug.Log($"Boss Health: {bossLives}");
@@ -180,7 +189,6 @@ public class BossManager : MonoBehaviour
 
             if (bossLives <= 0)
             { 
-                bossController.SetBool("isDead", true);
                 EndBossFight();
             }
         }
@@ -205,7 +213,6 @@ public class BossManager : MonoBehaviour
 
     private void EndBossFight()
     {
-        SoundManager.instance.PlaySound("BossDie");
 
 
         StopCoroutine(BossFightTimer());  // Stop the boss fight timer
@@ -233,7 +240,7 @@ public class BossManager : MonoBehaviour
         }
         
         // Wait for a few seconds before transitioning to the start screen
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
         SceneHandler.LoadClearedLevel1();
 
 

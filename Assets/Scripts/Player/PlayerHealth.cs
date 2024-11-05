@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     public GameObject[] healthPoints;
     public string gameOverSceneName = "GameOver";
     public Animator playerAnimator;
@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth > 0)
         {
-            cameraShake.TriggerShake(1f);
+            cameraShake.TriggerShake(0.15f);
 
             // Decrease health
             currentHealth--;
