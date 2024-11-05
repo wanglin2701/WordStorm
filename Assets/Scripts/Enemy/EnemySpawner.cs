@@ -27,12 +27,27 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        // Press 'B' to skip to boss stage for testing
-        // if (Input.GetKeyDown(KeyCode.B))
-        // {
-            // StopAllCoroutines();  // Stop any ongoing waves
-            // StartBossLevel();
-        // }
+        //Press 'SHIFT' to skip to boss stage for testing
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StopAllCoroutines();  // Stop any ongoing waves
+            DestroyAllEnemies();
+            waveNumber = 4;
+            StartBossLevel();
+        }
+    }
+
+    private void DestroyAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+            if (enemyAI != null && !enemyAI.isBossWave)  // Destroy only non-boss wave enemies
+            {
+                Destroy(enemy);
+            }
+        }
     }
 
     private IEnumerator SpawnWave()
