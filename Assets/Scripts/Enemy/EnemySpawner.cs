@@ -33,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
             StopAllCoroutines();  // Stop any ongoing waves
             DestroyAllEnemies();
             waveNumber = 4;
+            LevelInfo.text = "Level 1 | Boss Fight!";
+            timerText.gameObject.SetActive(false);
             StartBossLevel();
         }
     }
@@ -57,6 +59,8 @@ public class EnemySpawner : MonoBehaviour
         {
             if (waveNumber == 4) // Boss wave check
             {
+                LevelInfo.text = "Level 1 | Boss Fight!";
+                timerText.gameObject.SetActive(false);  
                 bossGameObject.SetActive(true);  // Make sure the boss is active
                 BossManager bossManager = bossGameObject.GetComponent<BossManager>();
                 if (bossManager != null)
@@ -91,6 +95,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator UpdateTimer()
     {
         while (levelActive)
+        // while in wave 1,2,3
         {
             float elapsedTime = Time.time - levelStartTime;
             string minutes = ((int)elapsedTime / 60).ToString("00");

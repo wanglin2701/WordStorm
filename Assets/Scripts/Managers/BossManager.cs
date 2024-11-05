@@ -9,9 +9,8 @@ public class BossManager : MonoBehaviour
 {
     public int ID;
     public int waveNo;
-    public int bossHealth = 7;
-    public int bossLives = 25;
-    private float bossTimer = 35f;  // Timer for each prefix challenge
+    public int bossLives = 7;
+    public float bossTimer = 15f;  // Timer for each prefix challenge
     public TextMeshProUGUI bossTimerText;
     public Slider healthBar; // Reference to the Slider component
 
@@ -35,8 +34,8 @@ public class BossManager : MonoBehaviour
 
         bossController = GetComponent<Animator>();
 
-        healthBar.maxValue = bossHealth;
-        healthBar.value = bossHealth;
+        healthBar.maxValue = bossLives;
+        healthBar.value = bossLives;
         StartCoroutine(BossFightTimer());
     }
 
@@ -57,32 +56,22 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // if (bossHealth <= 0 || bossLives <= 0)
-        // {
-
-        //     Debug.Log("Boss defeated!");
-        //     EndBossFight();
-        // }
-    }
-
     private IEnumerator BossFightTimer()
     {
-        while (bossHealth > 0 && bossLives > 0)
+        while (bossLives > 0 && playerHealth != null && playerHealth.currentHealth > 0)
         {
-            bossTimer = 35f;
+            bossTimer = 15f;
 
             // Countdown loop for the 25-second timer
-            while (bossTimer > 0 && currentEnemy != null)
+            while (bossTimer > 0 && currentEnemy != null && playerHealth.currentHealth > 0)
             {
                 bossTimer -= Time.deltaTime;
-                bossTimerText.text = $"Attack Countdown: {bossTimer:F2}s";
+                bossTimerText.text = $"{bossTimer:F2}s";
                 yield return null;
             }
 
             // If the timer runs out and the enemy is still present, the player loses a life
-            if (currentEnemy != null && bossTimer <= 0)
+            if (currentEnemy != null && bossTimer <= 0 && playerHealth.currentHealth > 0)
             {
                 SoundManager.instance.PlaySound("BossShoot");
 
@@ -97,35 +86,58 @@ public class BossManager : MonoBehaviour
             }
 
             // Ensure only one enemy is active at any time
+            if (playerHealth.currentHealth <= 0 && bossLives <= 0)
+            {
+                EndBossFight();
+                yield break;
+            }
+
             if (currentEnemy == null && bossLives > 0)
             {
                 SpawnPrefixEnemy();
-                bossTimer = 35f;
+                bossTimer = 15f;
             }
         }
     }
 
     public void RegisterEnemyKill()
     {
-        enemiesKilled++;
-        
-        if (currentEnemy != null)
+        if (currentEnemy != null && currentEnemy.GetComponent<EnemyAI>().isBossWave)
         {
-            Destroy(currentEnemy);  // Destroy the current enemy to clean up
-            currentEnemy = null;
-        }
-
-        if (enemiesKilled >= nextKillThreshold)
-        {
-            enemiesKilled = 0;
-            if (bossLives > 0)
+            enemiesKilled++;
+            
+            if (currentEnemy != null)
             {
-                bossLives--;
-                nextKillThreshold = bossLives >= 4 ? 3 : 4;
-                ApplyDamageToBoss(1);
+                Destroy(currentEnemy);  // Destroy the current enemy to clean up
+                currentEnemy = null;
+            }
+
+            if (enemiesKilled >= nextKillThreshold && bossTimer > 0)
+            {
+                enemiesKilled = 0;
+                if (bossLives > 0)
+                {
+                    bossLives--;
+
+                    healthBar.value = bossLives;
+                    SoundManager.instance.PlaySound("BossDamage");
+
+                    bossController.SetBool("isIdle", false);
+                    bossController.SetBool("takeDamage", true);
+
+                    UpdateBossSprite();
+
+                    if (bossLives <= 0)
+                    { 
+                        bossController.SetBool("isDead", true);
+                        EndBossFight();
+                    }
+                }
             }
         }
     }
+
+
     private void SpawnPrefixEnemy()
     {
         Debug.Log($"Attempting to spawn 15 enemies in total for Boss Wave {waveNo}.");
@@ -150,34 +162,27 @@ public class BossManager : MonoBehaviour
 
     public void ApplyDamageToBoss(int damage)
     {
-        if (bossHealth > 0)
+        if (bossLives > 0)
         {
             SoundManager.instance.PlaySound("BossDamage");
 
 
-            bossHealth = Mathf.Max(bossHealth - damage, 0);  // Ensure bossHealth does not go negative
+            bossLives = Mathf.Max(bossLives - damage, 0);  // Ensure bossHealth does not go negative
 
             bossController.SetBool("isIdle", false);
             bossController.SetBool("takeDamage", true);
 
 
-            if (healthBar != null) healthBar.value = bossHealth;
-            Debug.Log($"Boss Health: {bossHealth}");
+            //if (healthBar != null) healthBar.value = bossLives;
+            Debug.Log($"Boss Health: {bossLives}");
 
             UpdateBossSprite();
 
-            if (bossHealth <= 0)
+            if (bossLives <= 0)
             { 
                 bossController.SetBool("isDead", true);
                 EndBossFight();
             }
-
-            // if (bossHealth <= 0 || bossLives <= 0)
-            // {
-
-            //     Debug.Log("Boss defeated!");
-            //     //EndBossFight();
-            // }
         }
     }
 
@@ -192,7 +197,7 @@ public class BossManager : MonoBehaviour
     
     public void StartBossFight()
     {
-        bossTimer = 35f; // Reset the timer to 25 seconds
+        bossTimer = 15f; // Reset the timer to 25 seconds
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
 
         StartCoroutine(BossFightTimer());
