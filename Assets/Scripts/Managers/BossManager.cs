@@ -62,7 +62,7 @@ public class BossManager : MonoBehaviour
         {
             bossTimer = 15f;
 
-            // Countdown loop for the 25-second timer
+            // Countdown loop for the 15-second timer
             while (bossTimer > 0 && currentEnemy != null && playerHealth.currentHealth > 0)
             {
                 bossTimer -= Time.deltaTime;
@@ -112,7 +112,7 @@ public class BossManager : MonoBehaviour
                 currentEnemy = null;
             }
 
-            if (enemiesKilled >= nextKillThreshold && bossTimer > 0)
+            if (enemiesKilled >= nextKillThreshold)
             {
                 enemiesKilled = 0;
                 if (bossLives > 0)
@@ -205,7 +205,7 @@ public class BossManager : MonoBehaviour
     
     public void StartBossFight()
     {
-        bossTimer = 15f; // Reset the timer to 25 seconds
+        bossTimer = 15f; // Reset the timer to 15 seconds
         UpdateBossUI(true); // Method to update the visibility or state of boss-related UI elements
 
         StartCoroutine(BossFightTimer());
