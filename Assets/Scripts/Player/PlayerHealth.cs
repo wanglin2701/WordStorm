@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
     public CameraShake cameraShake;
 
+    public GameObject MCDamage_Particles;
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -38,6 +40,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth > 0)
         {
+            Instantiate(MCDamage_Particles, transform.position, Quaternion.identity);
+
             cameraShake.TriggerShake(0.15f);
 
             // Decrease health

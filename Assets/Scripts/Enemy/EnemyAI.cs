@@ -29,6 +29,9 @@ public class EnemyAI : MonoBehaviour
 
     public Animator enemyController;
 
+    public GameObject enemySmoke_Particle;
+    public GameObject enemyPoison_Particle;
+
     private void Start()
     {
         SetUpPrefix();
@@ -159,6 +162,7 @@ public class EnemyAI : MonoBehaviour
 
                 enemyController.SetBool("isDead", true);
                 enemyController.SetBool("isIdle", false);
+                Instantiate(enemySmoke_Particle, transform.position, Quaternion.identity);
 
             }
 
@@ -167,6 +171,8 @@ public class EnemyAI : MonoBehaviour
                 SoundManager.instance.PlaySound("PoisonDie");
 
                 enemyController.SetBool("isDead", true);
+                Instantiate(enemyPoison_Particle, transform.position, Quaternion.identity);
+
 
             }
 
@@ -176,8 +182,9 @@ public class EnemyAI : MonoBehaviour
         if(ID == 102)
         {
             SoundManager.instance.PlaySound("PoisonDie");
-
+            Instantiate(enemyPoison_Particle, transform.position, Quaternion.identity);
             enemyController.SetBool("isDamaged", true);
+
 
         }
     }

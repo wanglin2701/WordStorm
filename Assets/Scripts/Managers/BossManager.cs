@@ -28,6 +28,10 @@ public class BossManager : MonoBehaviour
 
     public Animator bossController;
 
+    public GameObject BossDamage_Particles;
+    public GameObject BossDeath_Particles;
+    public GameObject BossBlackSmoke;
+
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -130,6 +134,8 @@ public class BossManager : MonoBehaviour
 
                     if (bossLives <= 0)
                     {
+                        Instantiate(BossDeath_Particles, transform.position, Quaternion.identity);
+                        Instantiate(BossBlackSmoke, transform.position, Quaternion.identity);
 
                         SoundManager.instance.PlaySound("BossDie");
                         bossController.SetBool("isDead", true);
@@ -139,6 +145,7 @@ public class BossManager : MonoBehaviour
                     else
                     {
                         SoundManager.instance.PlaySound("BossDamage");
+                        Instantiate(BossDamage_Particles, transform.position, Quaternion.identity);
 
                         bossController.SetBool("isIdle", false);
                         bossController.SetBool("takeDamage", true);

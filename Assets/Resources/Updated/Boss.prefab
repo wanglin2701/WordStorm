@@ -183,6 +183,9 @@ MonoBehaviour:
   enemyPrefabs: []
   spawnPoint: {fileID: 0}
   bossController: {fileID: 0}
+  BossDamage_Particles: {fileID: 424556337425301174, guid: c05879dec72f09d4d86ef374380c19ec, type: 3}
+  BossDeath_Particles: {fileID: 5295593495862632313, guid: d9bf505ffa9a98a468d3d8560799a6a8, type: 3}
+  BossBlackSmoke: {fileID: 5295593495862632313, guid: 371924bc2e7d3ec4e94653e7abbe92e4, type: 3}
 --- !u!95 &4728080633630230943
 Animator:
   serializedVersion: 5
