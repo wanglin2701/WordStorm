@@ -92,8 +92,8 @@ public class BossManager : MonoBehaviour
                     bossAttack.FireBullet();
                 }
 
-                // Player takes damage and loses one health point
-                playerHealth.TakeDamage();
+                //// Player takes damage and loses one health point
+                //playerHealth.TakeDamage();
 
                 // Destroy the current enemy and reset
                 Destroy(currentEnemy);

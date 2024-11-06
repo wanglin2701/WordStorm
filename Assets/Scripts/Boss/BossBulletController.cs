@@ -34,10 +34,10 @@ public class BossBulletController : MonoBehaviour
             // Access the PlayerHealth component to apply damage
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            // if (playerHealth != null)
-            // {
-            //     playerHealth.TakeDamage(); // Deal damage to the player
-            // }
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(); // Deal damage to the player
+            }
 
             // Destroy the bullet upon impact
             Destroy(gameObject);
