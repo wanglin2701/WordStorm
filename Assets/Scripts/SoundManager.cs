@@ -45,13 +45,13 @@ public class SoundManager : MonoBehaviour
         switch (name)
         {
             case "BossDamage":
-                soundManagerSource.volume = 0.54f;
+                soundManagerSource.volume = 0.30f;
 
                 soundManagerSource.PlayOneShot(BossDamage);
                 break;
 
             case "BossDie":
-                soundManagerSource.volume = 0.54f;
+                soundManagerSource.volume = 0.30f;
 
                 soundManagerSource.PlayOneShot(BossDie);
                 break;
@@ -63,19 +63,19 @@ public class SoundManager : MonoBehaviour
                 break;
 
             case "PlayerDamage":
-                soundManagerSource.volume = 0.54f;
+                soundManagerSource.volume = 0.30f;
 
                 soundManagerSource.PlayOneShot(PlayerDamage);
                 break;
 
             case "PoisonDie":
-                soundManagerSource.volume = 0.54f;
+                soundManagerSource.volume = 0.30f;
 
                 soundManagerSource.PlayOneShot(PoisonDie);
                 break;
 
             case "SmokeDie":
-                soundManagerSource.volume = 0.54f;
+                soundManagerSource.volume = 0.30f;
 
                 soundManagerSource.PlayOneShot(SmokeDie);
                 break;
@@ -100,7 +100,6 @@ public class SoundManager : MonoBehaviour
 
                 if (musicManagerSource.clip != BGMusic)
                 {
-                    musicManagerSource.volume = 0.35f;
                     musicManagerSource.clip = BGMusic;
                     PlayMusic();
                 }
@@ -111,7 +110,6 @@ public class SoundManager : MonoBehaviour
 
                 if (musicManagerSource.clip != GameplayMusic)
                 {
-                    musicManagerSource.volume = 0.35f;
                     musicManagerSource.clip = GameplayMusic;
                     PlayMusic();
                 }
