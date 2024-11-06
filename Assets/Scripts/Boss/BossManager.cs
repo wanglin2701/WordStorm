@@ -24,6 +24,8 @@ public class BossManager : MonoBehaviour
     private int enemiesKilled = 0;
     public int nextKillThreshold;
     public bool isBossWave;
+
+    private BossAttack bossAttack;
     private PlayerHealth playerHealth;
     private GameObject currentEnemy; // Track the current active enemy
 
@@ -38,6 +40,8 @@ public class BossManager : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>();
 
         bossController = GetComponent<Animator>();
+
+        bossAttack = GetComponent<BossAttack>();
 
         healthBar.maxValue = bossLives;
         healthBar.value = bossLives;
@@ -78,15 +82,24 @@ public class BossManager : MonoBehaviour
             // If the timer runs out and the enemy is still present, the player loses a life
             if (currentEnemy != null && bossTimer <= 0 && playerHealth.currentHealth > 0)
             {
-                SoundManager.instance.PlaySound("BossShoot");
+                //SoundManager.instance.PlaySound("BossShoot");
 
                 Debug.Log("Time's up! Player takes damage.");
+
+                // Fire the boss bullet at the player
+                if (bossAttack != null)
+                {
+                    bossAttack.FireBullet();
+                }
+
+                // Player takes damage and loses one health point
                 playerHealth.TakeDamage();
 
                 // Destroy the current enemy and reset
                 Destroy(currentEnemy);
                 currentEnemy = null;
 
+                // Short delay before spawning the next enemy and restarting the timer
                 yield return new WaitForSeconds(1f);
             }
 
