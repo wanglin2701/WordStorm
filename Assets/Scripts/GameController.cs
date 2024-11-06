@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     public Animator playerAnimator;
     public Animator bossController;
 
+    private bool MusicStarted = false;
+
 
     private void Awake()
     {
@@ -34,12 +36,12 @@ public class GameController : MonoBehaviour
             progress_bar = GameObject.FindAnyObjectByType<Slider>();
             GameData.ReadGameData();
 
-            //Check data
-            Debug.Log("=========GET RANDOM PREFIX BASED ON LETTERS==============");
-            Debug.Log(GameData.GetEnemyWaveList().EnemyWave[2].enemyCount);
-            Debug.Log(GameData.GetEnemyWaveByNo(2).waveNo);
-            Debug.Log(GameData.GetEnemyByType("Normal").desc);
-            Debug.Log(GameData.GetEnemyByType("Armored").desc);
+            ////Check data
+            //Debug.Log("=========GET RANDOM PREFIX BASED ON LETTERS==============");
+            //Debug.Log(GameData.GetEnemyWaveList().EnemyWave[2].enemyCount);
+            //Debug.Log(GameData.GetEnemyWaveByNo(2).waveNo);
+            //Debug.Log(GameData.GetEnemyByType("Normal").desc);
+            //Debug.Log(GameData.GetEnemyByType("Armored").desc);
 
 
 
@@ -47,8 +49,20 @@ public class GameController : MonoBehaviour
 
         else if (activeScene == "game")
         {
+            SoundManager.instance.ChangeMusic("Gameplay");
+
             UI_Manager.SetInputField();
             playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
+
+        }
+
+        else if (activeScene == "StartScreen")
+        {
+
+            SoundManager.instance.ChangeMusic("BG");
+
+           
+
 
         }
 
@@ -62,7 +76,9 @@ public class GameController : MonoBehaviour
         //DebugDataReadInBuild();
         LoadScreens();
 
-      
+        
+
+
 
     }
 

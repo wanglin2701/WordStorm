@@ -4851,7 +4851,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: bf5521107cf0b394d82f4f2c22efa6f3, type: 3}
     - target: {fileID: 5028541193014957482, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: Keyboard.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5028541193014957482, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: Keyboard.Array.data[1]

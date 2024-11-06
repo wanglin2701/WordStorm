@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     public AudioSource soundManagerSource;
+    public AudioSource musicManagerSource;
+    private AudioSource[] audioSources;
 
     public AudioClip BossDamage;
     public AudioClip BossDie;
@@ -16,6 +18,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip PoisonDie;
     public AudioClip SmokeDie;
 
+    public AudioClip BGMusic;
+    public AudioClip GameplayMusic;
+
 
     private void Awake()
     {
@@ -24,6 +29,10 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            audioSources = GetComponentsInChildren<AudioSource>();
+            soundManagerSource = audioSources[0];
+            musicManagerSource = audioSources[1];
+
         }
         else
         {
@@ -74,4 +83,42 @@ public class SoundManager : MonoBehaviour
            
         }
     }
+
+    public void PlayMusic()
+    {
+        musicManagerSource.Play();
+       
+    }
+
+    public void ChangeMusic(string name)
+    {
+
+        switch (name)
+        {
+            case "BG":
+                Debug.Log(musicManagerSource);
+
+                if (musicManagerSource.clip != BGMusic)
+                {
+                    musicManagerSource.volume = 0.35f;
+                    musicManagerSource.clip = BGMusic;
+                    PlayMusic();
+                }
+           
+                break;
+
+            case "Gameplay":
+
+                if (musicManagerSource.clip != GameplayMusic)
+                {
+                    musicManagerSource.volume = 0.35f;
+                    musicManagerSource.clip = GameplayMusic;
+                    PlayMusic();
+                }
+                break;
+
+
+        }
+    }
+
 }
