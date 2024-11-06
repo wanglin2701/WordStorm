@@ -22,9 +22,6 @@ public class GameController : MonoBehaviour
     public Animator playerAnimator;
     public Animator bossController;
 
-    private bool MusicStarted = false;
-
-
     private void Awake()
     {
 
@@ -47,7 +44,19 @@ public class GameController : MonoBehaviour
 
         }
 
-        else if (activeScene == "game")
+      
+
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        //Call the method to read the data
+
+        //DebugDataReadInBuild();
+        LoadScreens();
+
+        if (activeScene == "game")
         {
             SoundManager.instance.ChangeMusic("Gameplay");
 
@@ -61,24 +70,7 @@ public class GameController : MonoBehaviour
 
             SoundManager.instance.ChangeMusic("BG");
 
-           
-
-
         }
-
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //Call the method to read the data
-
-        //DebugDataReadInBuild();
-        LoadScreens();
-
-        
-
-
 
     }
 
@@ -86,7 +78,7 @@ public class GameController : MonoBehaviour
     {
         if (SceneHandler.GetActiveSceneName() == "game")
         {
-            Debug.Log(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged"));
+            //Debug.Log(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged"));
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Damaged") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 playerAnimator.SetBool("damaged", false);

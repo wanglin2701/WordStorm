@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7405842665294487357}
   - component: {fileID: -4415052623885445499}
   - component: {fileID: 8084446809239397863}
-  - component: {fileID: -4921045585269105665}
   - component: {fileID: 8734594880977083802}
   - component: {fileID: 4728080633630230943}
+  - component: {fileID: 9012310953526055579}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -115,8 +115,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &-4921045585269105665
-BoxCollider2D:
+--- !u!114 &8734594880977083802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244434206618227149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c30ea4fcdd91f4fb876c27195d980e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 103
+  waveNo: 0
+  bossLives: 7
+  bossTimer: 15
+  bossTimerText: {fileID: 0}
+  healthBar: {fileID: 0}
+  damageSprites: []
+  bossSpriteRenderer: {fileID: 0}
+  enemyPrefabs: []
+  spawnPoint: {fileID: 0}
+  nextKillThreshold: 0
+  isBossWave: 0
+  bossController: {fileID: 0}
+  BossDamage_Particles: {fileID: 424556337425301174, guid: c05879dec72f09d4d86ef374380c19ec, type: 3}
+  BossDeath_Particles: {fileID: 5295593495862632313, guid: d9bf505ffa9a98a468d3d8560799a6a8, type: 3}
+  BossBlackSmoke: {fileID: 5295593495862632313, guid: 371924bc2e7d3ec4e94653e7abbe92e4, type: 3}
+--- !u!95 &4728080633630230943
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244434206618227149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c34beb4b043e4a0479269833e06fd756, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &9012310953526055579
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,66 +193,9 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0004889965, y: -0.046850324}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.1572146, y: 3.132614}
-  m_EdgeRadius: 0
---- !u!114 &8734594880977083802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3244434206618227149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39c30ea4fcdd91f4fb876c27195d980e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 103
-  waveNo: 0
-  bossLives: 7
-  bossTimer: 15
-  bossTimerText: {fileID: 0}
-  healthBar: {fileID: 0}
-  damageSprites: []
-  bossSpriteRenderer: {fileID: 0}
-  enemyPrefabs: []
-  spawnPoint: {fileID: 0}
-  bossController: {fileID: 0}
-  BossDamage_Particles: {fileID: 424556337425301174, guid: c05879dec72f09d4d86ef374380c19ec, type: 3}
-  BossDeath_Particles: {fileID: 5295593495862632313, guid: d9bf505ffa9a98a468d3d8560799a6a8, type: 3}
-  BossBlackSmoke: {fileID: 5295593495862632313, guid: 371924bc2e7d3ec4e94653e7abbe92e4, type: 3}
---- !u!95 &4728080633630230943
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3244434206618227149}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c34beb4b043e4a0479269833e06fd756, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Offset: {x: -0.0071132192, y: -0.0000025025474}
+  m_Size: {x: 4.5677233, y: 3.1185963}
+  m_Direction: 1

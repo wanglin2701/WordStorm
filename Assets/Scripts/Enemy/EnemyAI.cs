@@ -262,10 +262,24 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision);
+        Debug.Log(!hasDamagedPlayer);
         if (collision.gameObject.CompareTag("Player") && !hasDamagedPlayer)
         {
+            if (ID == 101) //Smoke Enemy Death
+            {
+                TakeDamage(1);
+
+            }
+
+            else if (ID == 102) //Poison Enemy Death
+            {
+                TakeDamage(2);
+
+            }
+
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
@@ -275,7 +289,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-
+  
     void OnDestroy()
     {
         BossManager bossManager = FindObjectOfType<BossManager>();
