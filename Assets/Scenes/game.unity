@@ -4845,30 +4845,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1877107993279391285, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: m_Volume
-      value: 0.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877107993279391285, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5028541193014957482, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: SmokeDie
-      value: 
-      objectReference: {fileID: 8300000, guid: bf5521107cf0b394d82f4f2c22efa6f3, type: 3}
-    - target: {fileID: 5028541193014957482, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: Keyboard.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5028541193014957482, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: Keyboard.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: f5fc4c658d4392d49888dea354720764, type: 3}
-    - target: {fileID: 5765840997814807915, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5794930966128746537, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4907,10 +4883,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5794930966128746537, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8105114733528543196, guid: f10057366753ef2489cbd136b66547d3, type: 3}
-      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562821561795313324, guid: f10057366753ef2489cbd136b66547d3, type: 3}
