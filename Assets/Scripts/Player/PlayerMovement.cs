@@ -22,11 +22,19 @@ public class PlayerMovement : MonoBehaviour
     // Public variable for the player's movement speed (can be set in Unity editor)
     public float moveSpeed;
 
+    public float screenLeft;  // Adjust based on the screen's left boundary in game scene
+    public float screenRight;  // Adjust based on the screen's right boundary in game scene
+    public float screenTop;    // Adjust based on the screen's top boundary in game scene
+    public float screenBottom; // Adjust based on the screen's bottom boundary in game scene
+
+
     void Start()
     {
         // Get the Rigidbody2D component attached to the player object
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+
+        
     }
 
     void Update()
@@ -72,6 +80,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+
+        // Constrain player to screen boundaries
+        ConstrainToScreen();
+
+        
     }
 
     void Flip()
@@ -83,5 +96,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    // Method to constrain player position within defined screen boundaries
+    void ConstrainToScreen()
+    {
+        Vector3 position = transform.position;
+
+        // Constrain player within the screen bounds
+        position.x = Mathf.Clamp(position.x, screenLeft, screenRight);
+        position.y = Mathf.Clamp(position.y, screenBottom, screenTop);
+
+        // Apply the clamped position to the player
+        transform.position = position;
     }
 }
