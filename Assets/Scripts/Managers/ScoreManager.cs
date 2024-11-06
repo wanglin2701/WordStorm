@@ -35,4 +35,9 @@ public static class ScoreManager
     {
         return (int)score; 
     }
+
+    public static void ResetScore()
+    {
+        score = 0;
+    }
 }

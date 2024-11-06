@@ -17,9 +17,15 @@ public class EnemySpawner : MonoBehaviour
 
     public TextMeshProUGUI LevelInfo;
     public GameObject bossGameObject; // Reference to the boss GameObject
-    
+
+    public Dictionary<string, int> usedWords = new Dictionary<string, int>();
+
+
     void Start()
     {
+        usedWords.Clear();  //Clear whenever start of new game
+        ComboManager.ResetCombo();
+        ScoreManager.ResetScore();
         LevelInfo.text = "Level 1 | Wave " + waveNumber;
         levelStartTime = Time.time;  // Record the start time of the level
         StartCoroutine(SpawnWave());
@@ -169,6 +175,8 @@ public class EnemySpawner : MonoBehaviour
                 Debug.LogError("Failed to start Boss Fight: GameObject is not active in hierarchy.");
             }
     }
+
+   
 }
 
 // private IEnumerator SpawnWave()

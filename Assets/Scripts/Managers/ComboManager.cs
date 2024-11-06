@@ -22,6 +22,11 @@ public static class ComboManager
         return combo;
     }
 
+    public static void ResetCombo()
+    {
+        combo = 0;
+    }
+
     public static void ResetComboTimer()  //Called everytime the player successfully attacks
     {
         isComboOngoing = true;

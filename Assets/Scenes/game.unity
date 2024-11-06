@@ -4149,7 +4149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: bossLives
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: healthBar

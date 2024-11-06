@@ -21,7 +21,6 @@ public class EnemyAI : MonoBehaviour
     
     private static Dictionary<string, List<string>> WSDictionary;
 
-    private static Dictionary<string, int> usedWords = new Dictionary<string, int>();
 
     private bool hasDamagedPlayer = false; // Flag to ensure health is only decreased once
     public TextMeshProUGUI TextUI => GetComponentInChildren<TextMeshProUGUI>();
@@ -32,10 +31,13 @@ public class EnemyAI : MonoBehaviour
     public GameObject enemySmoke_Particle;
     public GameObject enemyPoison_Particle;
 
+    public static EnemySpawner enemySpawner;
+
     private void Start()
     {
         SetUpPrefix();
 
+        enemySpawner = GameObject.Find("EnemySpawnerManager").GetComponent<EnemySpawner>();
         enemyController = GetComponent<Animator>();
         
 
@@ -215,9 +217,9 @@ public class EnemyAI : MonoBehaviour
                 if (validWords.Contains(playerInput))
                 {
 
-                    if (usedWords.ContainsKey(playerInput))
+                    if (enemySpawner.usedWords.ContainsKey(playerInput))
                     {
-                        if (usedWords[playerInput] >= 2)  //For testing purpose, each word can only use twice
+                        if (enemySpawner.usedWords[playerInput] >= 2)  //For testing purpose, each word can only use twice
                         {
 
 
@@ -226,15 +228,15 @@ public class EnemyAI : MonoBehaviour
 
                         else
                         {
-                            usedWords[playerInput]++;
+                            enemySpawner.usedWords[playerInput]++;
 
                         }
                     }
 
                     else
                     {
-                        usedWords.Add(playerInput, +1);
-
+                        enemySpawner.usedWords.Add(playerInput, +1);
+                        Debug.Log("Word Added to usedWords");
                     }
                     return enemy.enemyPrefix; // Return the matching prefix
                 }
@@ -244,6 +246,7 @@ public class EnemyAI : MonoBehaviour
         return "Invalid Word"; // Return null if no match is found
     }
 
+  
     void SetUpPrefix()
     {
          int letterCount = ID == 101 ? Random.Range(2, 4) : Random.Range(4, 7);
