@@ -86,8 +86,8 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic()
     {
+        musicManagerSource.loop = true;
         musicManagerSource.Play();
-       
     }
 
     public void ChangeMusic(string name)

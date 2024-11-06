@@ -22,7 +22,8 @@ public class BossManager : MonoBehaviour
     public Transform spawnPoint; // Spawn point for enemies
 
     private int enemiesKilled = 0;
-    private int nextKillThreshold = 3;
+    public int nextKillThreshold;
+    public bool isBossWave;
     private PlayerHealth playerHealth;
     private GameObject currentEnemy; // Track the current active enemy
 
@@ -119,6 +120,9 @@ public class BossManager : MonoBehaviour
             if (enemiesKilled >= nextKillThreshold)
             {
                 enemiesKilled = 0;
+                
+                
+
                 if (bossLives > 0)
                 {
                     bossLives--;

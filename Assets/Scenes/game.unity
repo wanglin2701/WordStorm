@@ -4076,6 +4076,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
+      propertyPath: isBossWave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1509662656}
@@ -4087,6 +4091,10 @@ PrefabInstance:
       propertyPath: bossController
       value: 
       objectReference: {fileID: 1778426187}
+    - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
+      propertyPath: nextKillThreshold
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8734594880977083802, guid: 348cee7c99bd1844aa74bf6710fcd3ed, type: 3}
       propertyPath: bossSpriteRenderer
       value: 
@@ -4857,6 +4865,10 @@ PrefabInstance:
       propertyPath: Keyboard.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: f5fc4c658d4392d49888dea354720764, type: 3}
+    - target: {fileID: 5765840997814807915, guid: f10057366753ef2489cbd136b66547d3, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5794930966128746537, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4895,6 +4907,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5794930966128746537, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105114733528543196, guid: f10057366753ef2489cbd136b66547d3, type: 3}
+      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562821561795313324, guid: f10057366753ef2489cbd136b66547d3, type: 3}

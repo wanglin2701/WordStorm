@@ -721,6 +721,10 @@ PrefabInstance:
       propertyPath: Keyboard.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: f5fc4c658d4392d49888dea354720764, type: 3}
+    - target: {fileID: 5765840997814807915, guid: f10057366753ef2489cbd136b66547d3, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5794930966128746537, guid: f10057366753ef2489cbd136b66547d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
