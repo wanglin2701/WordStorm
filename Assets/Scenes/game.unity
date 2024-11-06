@@ -3773,7 +3773,7 @@ MonoBehaviour:
   - {fileID: 825522118}
   - {fileID: 789314422}
   - {fileID: 1774182454}
-  spawnRate: 6
+  spawnRate: 15
   timerText: {fileID: 364554897}
   LevelInfo: {fileID: 1334576467}
   bossGameObject: {fileID: 1778426185}

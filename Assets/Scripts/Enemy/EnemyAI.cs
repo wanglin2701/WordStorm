@@ -169,7 +169,6 @@ public class EnemyAI : MonoBehaviour
             else if(ID == 102)
             {
                 SoundManager.instance.PlaySound("PoisonDie");
-
                 enemyController.SetBool("isDead", true);
                 Instantiate(enemyPoison_Particle, transform.position, Quaternion.identity);
 
@@ -179,8 +178,10 @@ public class EnemyAI : MonoBehaviour
             //Destroy Enemy when animation done
         }
 
-        if(ID == 102)
+        else if(ID == 102)
         {
+            SetUpPrefix();
+
             SoundManager.instance.PlaySound("PoisonDie");
             Instantiate(enemyPoison_Particle, transform.position, Quaternion.identity);
             enemyController.SetBool("isDamaged", true);
@@ -248,8 +249,9 @@ public class EnemyAI : MonoBehaviour
          int letterCount = ID == 101 ? Random.Range(2, 4) : Random.Range(4, 7);
         var (prefix, enemyID) = GameData.GetRandomPrefixBasedOnNumberLetters(letterCount);
 
-        if (!string.IsNullOrEmpty(prefix) && enemyID == ID) 
+        if (enemyID == ID) 
         {
+            Debug.Log("CHANGING PREFIX");
             enemyPrefix = prefix;
             
             // Display the prefix on the enemy’s TextMeshProUGUI component
@@ -264,8 +266,8 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision);
-        Debug.Log(!hasDamagedPlayer);
+        //Debug.Log(collision);
+        //Debug.Log(!hasDamagedPlayer);
         if (collision.gameObject.CompareTag("Player") && !hasDamagedPlayer)
         {
             if (ID == 101) //Smoke Enemy Death

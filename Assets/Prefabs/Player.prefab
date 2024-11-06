@@ -4935,8 +4935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 7719219145984285492}
-  speedLimit: 0.7
-  moveSpeed: 5
+  speedLimit: 1
+  moveSpeed: 3.5
 --- !u!114 &9194594559611069265
 MonoBehaviour:
   m_ObjectHideFlags: 0
