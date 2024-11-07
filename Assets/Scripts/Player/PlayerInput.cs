@@ -15,6 +15,8 @@ public class PlayerInput : MonoBehaviour
         inputField.ActivateInputField(); // Activate the input field for typing
 
         playerAttack = FindObjectOfType<PlayerAttack>(); // Find the PlayerAttack script
+
+        UI_Manager.SetGameScene();
     }
 
     private void Update()
@@ -31,6 +33,11 @@ public class PlayerInput : MonoBehaviour
             inputField.Select(); // Focus the input field at the start
             inputField.ActivateInputField(); // Activate the input field for typing
         }
+
+        // Ensure the caret stays at the end of the input field text
+        inputField.caretPosition = inputField.text.Length;
+        inputField.selectionAnchorPosition = inputField.text.Length;
+        inputField.selectionFocusPosition = inputField.text.Length;
     }
     
     void SubmitWord(string word)
@@ -45,6 +52,9 @@ public class PlayerInput : MonoBehaviour
         // Automatically refocus the input field after submission
         inputField.Select();
         inputField.ActivateInputField();
+
+        // Ensure the caret stays at the end
+        inputField.caretPosition = 0;
 
         // If the word is correct, trigger bullet fire
         if (enemyPrefix == "Word is Already Used Twice!!")
@@ -76,9 +86,6 @@ public class PlayerInput : MonoBehaviour
             UI_Manager.UpdateScoreTmpro();
 
         }
-
-
-     
 
     }
 

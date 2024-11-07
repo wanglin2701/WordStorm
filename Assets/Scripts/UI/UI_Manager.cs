@@ -21,9 +21,9 @@ public static class UI_Manager
     private static Button quitBTN;
 
     //Game UI Elements
-    private static TextMeshProUGUI scoreTxt;
-    private static TextMeshProUGUI comboTxt;
-    private static TextMeshProUGUI comboWordTxt;
+    public static TextMeshProUGUI scoreTxt;
+    public static TextMeshProUGUI comboTxt;
+    public static TextMeshProUGUI comboWordTxt;
     
     private static TMP_InputField inputField;
 
@@ -81,18 +81,36 @@ public static class UI_Manager
         scoreTxt = GameObject.Find("ScoreTxt").GetComponentInChildren<TextMeshProUGUI>();
         comboTxt = GameObject.Find("ComboTxt").GetComponentInChildren<TextMeshProUGUI>();
         comboWordTxt = GameObject.Find("ComboWord").GetComponent<TextMeshProUGUI>();
+    
+        // Set default text to confirm initialization
+        scoreTxt.text = "0";
+        comboTxt.text = "0";
     }
 
     public static void UpdateScoreTmpro()
     {
         Debug.Log(ScoreManager.GetPlayerScore().ToString());
 
-        scoreTxt.text = ScoreManager.GetPlayerScore().ToString();
+        if (scoreTxt != null)
+        {
+            scoreTxt.text = ScoreManager.GetPlayerScore().ToString();
+        }
+        else
+        {
+            Debug.LogError("scoreTxt is not assigned! Make sure SetGameScene() is called in the game scene.");
+        }
     }
 
     public static void UpdateComboTmpro()
     {
-        comboTxt.text = ComboManager.GetCombo().ToString();
+        if (comboTxt != null)
+        {
+            comboTxt.text = ComboManager.GetCombo().ToString();
+        }
+        else
+        {
+            Debug.LogError("comboTxt is not assigned! Make sure SetGameScene() is called in the game scene.");
+        }
     }
 
     public static TextMeshProUGUI GetComboTxt()
