@@ -21,9 +21,15 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-
+            
             SubmitWord(inputField.text);
            
+        }
+
+        else if (Input.GetMouseButtonDown(0))
+        {
+            inputField.Select(); // Focus the input field at the start
+            inputField.ActivateInputField(); // Activate the input field for typing
         }
     }
     
@@ -34,6 +40,11 @@ public class PlayerInput : MonoBehaviour
         inputField.text = "";
 
         inputField.SetTextWithoutNotify(""); // Clear the input field after submission32
+
+
+        // Automatically refocus the input field after submission
+        inputField.Select();
+        inputField.ActivateInputField();
 
         // If the word is correct, trigger bullet fire
         if (enemyPrefix == "Word is Already Used Twice!!")
@@ -67,9 +78,6 @@ public class PlayerInput : MonoBehaviour
         }
 
 
-        // Automatically refocus the input field after submission
-        inputField.Select();
-        inputField.ActivateInputField();
      
 
     }

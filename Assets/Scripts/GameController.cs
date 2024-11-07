@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEditor;
+using static UnityEngine.Rendering.DebugUI;
 
 
 //Starts and loads game
@@ -132,6 +133,8 @@ public class GameController : MonoBehaviour
 
 
         }
+
+     
     }
 
     static IEnumerator WaitforSecond(float duration, string destination)  //1f 1 second
