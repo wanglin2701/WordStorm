@@ -10,20 +10,33 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        inputField.onSubmit.AddListener(SubmitWord);
+        //inputField.onSubmit.AddListener(SubmitWord);
         inputField.Select(); // Focus the input field at the start
         inputField.ActivateInputField(); // Activate the input field for typing
 
         playerAttack = FindObjectOfType<PlayerAttack>(); // Find the PlayerAttack script
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+
+            SubmitWord(inputField.text);
+           
+        }
+    }
+    
     void SubmitWord(string word)
     {
         
         string enemyPrefix = EnemyAI.CheckInput(word);
+        inputField.text = "";
+
+        inputField.SetTextWithoutNotify(""); // Clear the input field after submission32
 
         // If the word is correct, trigger bullet fire
-        if(enemyPrefix == "Word is Already Used Twice!!")
+        if (enemyPrefix == "Word is Already Used Twice!!")
         {
             inputField.placeholder.GetComponent<TMP_Text>().color = Color.red;
 
@@ -53,11 +66,12 @@ public class PlayerInput : MonoBehaviour
 
         }
 
-        inputField.text = ""; // Clear the input field after submission
-        
+
         // Automatically refocus the input field after submission
         inputField.Select();
         inputField.ActivateInputField();
+     
+
     }
 
 }
