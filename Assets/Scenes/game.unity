@@ -5090,6 +5090,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7397364481954385356, guid: d0d46b1651fcc854b92312903aa7c5c4, type: 3}
+      propertyPath: m_Radius
+      value: 0.49019274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397364481954385356, guid: d0d46b1651fcc854b92312903aa7c5c4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.093879074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397364481954385356, guid: d0d46b1651fcc854b92312903aa7c5c4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.13982001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
